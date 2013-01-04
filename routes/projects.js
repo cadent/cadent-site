@@ -20,9 +20,10 @@ db.open(function(err, db) {
 });
 
 exports.findAll = function(req, res) {
+console.log('projects/findAll: ');
 //    db.collection('wines', function(err, collection) {
 //        collection.find().toArray(function(err, items) {
-//            res.send(items);
+            res.send('projects/findAll :: success');
 //        });
 //    });
 };
