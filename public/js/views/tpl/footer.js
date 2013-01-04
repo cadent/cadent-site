@@ -1,4 +1,4 @@
-Tracr.FooterView = Backbone.View.extend({
+CADENT.FooterView = Backbone.View.extend({
 
     initialize: function () {
         this.render();

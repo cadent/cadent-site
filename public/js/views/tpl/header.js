@@ -1,4 +1,4 @@
-Tracr.HeaderView = Backbone.View.extend({
+CADENT.HeaderView = Backbone.View.extend({
 
     initialize: function () {
         this.render();
