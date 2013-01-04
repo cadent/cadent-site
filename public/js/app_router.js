@@ -12,7 +12,7 @@ CADENT.ApiVersion = 'v1';
 // Main App
 CADENT.App = Backbone.Router.extend({
     routes: {
-        "/": "setupApp",
+        "": "setupApp",
         "projects": "projects"
     },
     
