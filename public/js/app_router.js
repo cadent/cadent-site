@@ -5,9 +5,9 @@ CADENT = window.CADENT || {};
  * GLOBAL VARIABLES
  */
 
-CADENT.App.rootUrl = '';
-CADENT.App.ApiUrl = '';
-CADENT.App.ApiVersion = 'v1';
+CADENT.rootUrl = '';
+CADENT.ApiUrl = '';
+CADENT.ApiVersion = 'v1';
 
 // Main App
 CADENT.App = Backbone.Router.extend({
