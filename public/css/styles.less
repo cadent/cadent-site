@@ -1,0 +1,80 @@
+/*
+ * ----------------------------------------------------
+ * 
+ * VARIABLES
+ * 
+ * ----------------------------------------------------
+ */
+
+@deepRed: #a93a03;
+@deepOrange: #e67b10;
+@deepBrown: #763c08;
+
+/*
+ * ----------------------------------------------------
+ * 
+ * MIXINS
+ * 
+ * ----------------------------------------------------
+ */
+
+.txtNormal {
+  font-family: 'Open Sans' !important;
+  font-style: normal;
+  font-weight: 400;
+}
+
+/*
+ * ----------------------------------------------------
+ * 
+ * BOILERPLATE
+ * 
+ * ----------------------------------------------------
+ */
+
+html, body{
+    margin:0;
+    padding:0;
+    background-color: rgba(255, 255, 255, 0.46);
+    min-width:100%;
+    min-height:100%;
+    height:auto;
+    width:auto;
+    .txtNormal;
+    font-size: 18px;
+    color: @deepBrown;
+    background-image:url('../img/bg-stripes-brown.png');
+}
+
+a {
+  color: @deepOrange;
+  text-decoration: none;
+}
+
+a:hover {
+  color: @deepRed;
+  text-decoration: underline;
+}
+
+/*
+ * ----------------------------------------------------
+ * 
+ * START MAIN
+ * 
+ * ----------------------------------------------------
+ */
+
+.container {
+  width: 920px;
+  background-color: #f9f6f0;
+  margin: auto;
+  box-shadow: 0 0 60px #632a0e;
+  border: 1px solid rgba(200, 200, 200, 1);
+  
+  .header {
+    width: 820px;
+    height: 560px;
+    margin: auto;
+    background-color: @deepRed;
+  }
+}
