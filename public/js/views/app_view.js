@@ -21,11 +21,13 @@ CADENT.AppView = Backbone.View.extend({
 		//this.$footer = this.$('.evt-app-footer');
 		//this.$main = this.$('#main');
 		
+		/*
 		this.header = new HeaderView();
         $('.header').html(this.header.el);
         
         this.footer = new FooterView();
         $('.footer').html(this.footer.el);
+		*/
 		
 		// Load event types
 		//Tracr.event_types = new Tracr.EvtTypes();
