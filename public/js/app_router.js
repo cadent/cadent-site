@@ -25,8 +25,8 @@ CADENT.App = Backbone.Router.extend({
         this.footerView = new CADENT.FooterView();
         $('.footer').html(this.footerView.el);
         
-        this.adminView = new CADENT.FooterView();
-        $('.admin').html(this.adminView.el);
+        this.adminView = new CADENT.AdminView();
+        $('.content').html(this.adminView.el);
     },
     
     projects: function() {
