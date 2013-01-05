@@ -19,7 +19,7 @@ CADENT.Project = Backbone.Model.extend({
 
 CADENT.ProjectCollection = Backbone.Collection.extend({
 
-    model: Project,
+    model: CADENT.Project,
 
     url: "/projects"
 
