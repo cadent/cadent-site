@@ -9,6 +9,7 @@
 @deepRed: #a93a03;
 @deepOrange: #e67b10;
 @deepBrown: #763c08;
+@txtLight: #fff;
 
 /*
  * ----------------------------------------------------
@@ -85,5 +86,14 @@ a:hover {
     width:920px;
     height:100px;
     background-color: @deepOrange;
+    
+    a {
+      color: @txtLight;
+    }
+    
+    a:hover {
+      color: @deepRed;
+      text-decoration: underline;
+    }
   }
 }
