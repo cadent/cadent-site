@@ -1,9 +1,17 @@
-<strong>Admin Template</strong>
-<br><br>
-<form id="project_form">
-	<input id="name" type="text" placeholder="Project Name"/>
-	<br>
-	<input id="pid" type="text" placeholder="Project ID (string)"/>
-	<br>
-	<textarea id="desc"></textarea>
-</form>
+<div class="admin">
+	<strong>Admin Template</strong>
+	<br><br>
+	<form action="#">
+		<input id="name" type="text" placeholder="Project Name" required/>
+		<br>
+		<input id="pid" type="text" placeholder="Project ID (string)" required/>
+		<br>
+		<input id="url" type="url" placeholder="Project URL" />
+		<br>
+		<input type="color" />
+		<br>
+		<textarea id="desc" rows="30" cols="150"></textarea>
+		<br>
+		<input type="submit" value="Add Project"/>
+	</form>
+</div>

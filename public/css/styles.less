@@ -57,6 +57,15 @@ a:hover {
   text-decoration: underline;
 }
 
+:required {
+  border-color: @deepRed;
+ /* -webkit-box-shadow: 0 0 5px rgba(0, 0, 255, .5);
+  -moz-box-shadow: 0 0 5px rgba(0, 0, 255, .5);
+  -o-box-shadow: 0 0 5px rgba(0, 0, 255, .5);
+  -ms-box-shadow: 0 0 5px rgba(0, 0, 255, .5);
+  box-shadow: 0 0 5px rgba(0, 0, 255, .5);*/
+}
+
 /*
  * ----------------------------------------------------
  * 
@@ -94,6 +103,19 @@ a:hover {
     a:hover {
       color: @deepRed;
       text-decoration: underline;
+    }
+  }
+  
+  .content {
+    width:100%;
+    padding: 20px;
+    
+    .admin {
+      width: 100%;
+      
+      .form {
+        
+      }
     }
   }
 }
