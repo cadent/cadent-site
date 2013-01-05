@@ -1,3 +1,53 @@
+var connect = require( 'connect' );
+var mongo = require( 'mongodb' );
+
+var port = process.env.PORT || 3000;
+var mongoUri = process.env.MONGOLAB_URI;
+console.log( "start connection " + mongoUri + "  |  " + port );
+var database = null;
+
+mongo.connect( mongoUri, {}, dbConnectCallback );
+
+
+function dbConnectCallback( error, db )
+{
+    database = db;
+	console.log( "Connected to MongoLab" );
+    database.addListener( "error", handleError );
+   // database.createCollection( "contacts", createCollectionCallback );
+};
+
+function handleError( error )
+{
+    console.log( "Error connecting to MongoLab" );
+};
+
+
+exports.findAll = function(req, res) {
+	console.log('projects/findAll: ');
+//    db.collection('wines', function(err, collection) {
+//        collection.find().toArray(function(err, items) {
+            res.send('projects/findAll :: success');
+//        });
+//    });
+};
+
+exports.addProject = function(req, res) {
+    var proj = req.body;
+    console.log('Adding project: ' + JSON.stringify(proj));
+    database.collection('projects', function(err, collection) {
+        collection.insert(proj, {safe:true}, function(err, result) {
+            if (err) {
+                res.send({'error':'An error has occurred'});
+            } else {
+                console.log('Success: ' + JSON.stringify(result[0]));
+                res.send(result[0]);
+            }
+        });
+    });
+};
+
+/*
 var mongo = require('mongodb');
 
 var Server = mongo.Server,
@@ -21,27 +71,4 @@ db.open(function(err, db) {
     	console.log("Failed to connect... " + err);
     }
 });
-
-exports.findAll = function(req, res) {
-	console.log('projects/findAll: ');
-//    db.collection('wines', function(err, collection) {
-//        collection.find().toArray(function(err, items) {
-            res.send('projects/findAll :: success');
-//        });
-//    });
-};
-
-exports.addProject = function(req, res) {
-    var proj = req.body;
-    console.log('Adding project: ' + JSON.stringify(proj));
-    db.collection('projects', function(err, collection) {
-        collection.insert(proj, {safe:true}, function(err, result) {
-            if (err) {
-                res.send({'error':'An error has occurred'});
-            } else {
-                console.log('Success: ' + JSON.stringify(result[0]));
-                res.send(result[0]);
-            }
-        });
-    });
-};
+*/

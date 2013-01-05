@@ -3,7 +3,7 @@ var mongo = require( 'mongodb' );
 
 var port = process.env.PORT || 3000;
 var mongoUri = process.env.MONGOLAB_URI;
-
+console.log( "start connection " + mongoUri + "  |  " + port );
 var database = null;
 
 mongo.connect( mongoUri, {}, dbConnectCallback );

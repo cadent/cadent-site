@@ -2,7 +2,6 @@ var express = require('express'),
     path = require('path'),
     http = require('http'),
     project = require('./routes/projects');
-    test = require('./routes/test');
 
 var app = express();
 
@@ -15,7 +14,7 @@ app.configure(function () {
 
 app.get('/projects', project.findAll);
 app.post('/projects', project.addProject);
-app.get('/test', test.testIt);
+
 console.log("Server hit - " + app.get('port'));
 http.createServer(app).listen(app.get('port'), function () {
     console.log("Express server listening on port " + app.get('port'));
