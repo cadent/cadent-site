@@ -4,7 +4,7 @@ var Server = mongo.Server,
     Db = mongo.Db,
     BSON = mongo.BSONPure;
     
-var server = new Server('localhost', process.env.MONGOLAB_URI, {auto_reconnect: true});
+var server = new Server('localhost', 3000, {auto_reconnect: true});
 db = new Db('projectsdb', server, {safe: true});
 
 db.open(function(err, db) {
