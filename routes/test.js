@@ -12,7 +12,7 @@ mongo.connect( mongoUri, {}, dbConnectCallback );
 function dbConnectCallback( error, db )
 {
     database = db;
-
+	console.log( "Connected to MongoLab" );
     database.addListener( "error", handleError );
    // database.createCollection( "contacts", createCollectionCallback );
 };
