@@ -26,6 +26,18 @@ CADENT.AdminView = Backbone.View.extend({
 	addProject : function( e ) {
 		e.preventDefault(); 
 		console.log('Submit!');
+		this.model.save(null, {
+            success: function (model) {
+                //self.render();
+                //app.navigate('wines/' + model.id, false);
+                //utils.showAlert('Success!', 'Wine saved successfully', 'alert-success');
+                console.log('Saved Successfully');
+            },
+            error: function () {
+                //utils.showAlert('Error', 'An error occurred while trying to delete this item', 'alert-error');
+                console.log('Error Saving');
+            }
+        });
 	}
 
 });
