@@ -8,6 +8,7 @@ var server = new Server('localhost', 27017, {auto_reconnect: true});
 db = new Db('projectsdb', server, {safe: true});
 
 db.open(function(err, db) {
+    console.log("init mongo open");
     if(!err) {
         console.log("Connected to 'projectsdb' database");
         db.collection('projects', {safe:true}, function(err, collection) {
@@ -31,10 +32,16 @@ exports.findAll = function(req, res) {
 };
 
 exports.addProject = function(req, res) {
-	console.log('projects/addProject: ');
-//    db.collection('wines', function(err, collection) {
-//        collection.find().toArray(function(err, items) {
-            res.send('projects/addProject :: success');
-//        });
-//    });
+    var proj = req.body;
+    console.log('Adding project: ' + JSON.stringify(proj));
+    db.collection('projects', function(err, collection) {
+        collection.insert(proj, {safe:true}, function(err, result) {
+            if (err) {
+                res.send({'error':'An error has occurred'});
+            } else {
+                console.log('Success: ' + JSON.stringify(result[0]));
+                res.send(result[0]);
+            }
+        });
+    });
 };
