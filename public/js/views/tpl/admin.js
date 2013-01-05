@@ -23,7 +23,8 @@ CADENT.AdminView = Backbone.View.extend({
         console.log(change[target.name] + ' changed to: ' + target.value);
     },
     
-	addProject : function() {
+	addProject : function( e ) {
+		e.preventDefault(); 
 		console.log('Submit!');
 	}
 
