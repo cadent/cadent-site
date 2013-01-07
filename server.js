@@ -1,7 +1,8 @@
 var express = require('express'),
     path = require('path'),
     http = require('http'),
-    project = require('./routes/projects');
+    project = require('./routes/projects'),
+    tag = require('./routes/tags');
 
 var app = express();
 
@@ -12,8 +13,11 @@ app.configure(function () {
     app.use(express.static(path.join(__dirname, 'public')));
 });
 
-app.get('/projects', project.findAll);
-app.post('/projects', project.addProject);
+app.get('/projects', tag.findAll);
+app.post('/projects', tag.addTag);
+
+app.get('/tags', project.findAll);
+app.post('/tags', project.addProject);
 
 console.log("Server hit - " + app.get('port'));
 http.createServer(app).listen(app.get('port'), function () {
