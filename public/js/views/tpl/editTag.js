@@ -1,7 +1,7 @@
-CADENT.AdminView = Backbone.View.extend({
+CADENT.TagEditView = Backbone.View.extend({
 
     events: {
-		'click #b_tag_submit'	: 'addProject',
+		'click #b_tag_submit'	: 'addTag',
 		"change"        		: "change",
 	},
 	
