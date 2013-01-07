@@ -29,9 +29,11 @@ CADENT.App = Backbone.Router.extend({
         this.adminView = new CADENT.AdminView({model:proj});
 		$('.content').html(this.adminView.el);
         
+        $('.content').append('<br><br>');
+        
         var tagEdit = new CADENT.Tag();
         this.tagEditView = new CADENT.TagEditView({model:tagEdit});
-        $('.content').append('<br><br>' + this.tagEditView.el);
+        $('.content').append(this.tagEditView.el);
     },
     
     projects: function() {
