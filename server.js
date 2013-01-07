@@ -14,10 +14,10 @@ app.configure(function () {
 });
 
 app.get('/projects', project.findAll);
-app.post('/projects', project.addTag);
+app.post('/projects', project.addProject);
 
 app.get('/tags', tag.findAll);
-app.post('/tags', tag.addProject);
+app.post('/tags', tag.addTag);
 
 console.log("Server hit - " + app.get('port'));
 http.createServer(app).listen(app.get('port'), function () {
