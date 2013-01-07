@@ -1,3 +1,9 @@
+///// 
+// Working EXCEPT on first call to API which fails as the connection is not setup yet
+// After first call, connection is set
+/////
+
+
 var connect = require( 'connect' );
 var mongo = require( 'mongodb' );
 

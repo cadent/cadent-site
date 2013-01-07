@@ -24,3 +24,20 @@ CADENT.ProjectCollection = Backbone.Collection.extend({
     url: "/projects"
 
 });
+
+CADENT.Tag = Backbone.Model.extend({
+
+    urlRoot: "/tags",
+
+    idAttribute: "_id",
+
+    initialize: function () {
+        
+    },
+
+    defaults: {
+        _id: null,
+        name: "Missing Name",
+        desc: "Missing Description"
+    }
+});
