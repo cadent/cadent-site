@@ -31,7 +31,7 @@ CADENT.App = Backbone.Router.extend({
         
         var tagEdit = new CADENT.Tag();
         this.tagEditView = new CADENT.TagEditView({model:tagEdit});
-        $('.content').html(this.tagEditView.el);
+        $('.content').append(this.tagEditView.el);
     },
     
     projects: function() {
