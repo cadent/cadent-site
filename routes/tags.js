@@ -40,7 +40,7 @@ exports.findAll = function(req, res) {
 
 exports.addTag = function(req, res) {
     var tag = req.body;
-    console.log('Adding tag: ' + JSON.stringify(proj));
+    console.log('Adding tag: ' + JSON.stringify(tag));
     database.collection('tags', function(err, collection) {
         collection.insert(tag, {safe:true}, function(err, result) {
             if (err) {

@@ -13,11 +13,11 @@ app.configure(function () {
     app.use(express.static(path.join(__dirname, 'public')));
 });
 
-app.get('/projects', tag.findAll);
-app.post('/projects', tag.addTag);
+app.get('/projects', project.findAll);
+app.post('/projects', project.addTag);
 
-app.get('/tags', project.findAll);
-app.post('/tags', project.addProject);
+app.get('/tags', tag.findAll);
+app.post('/tags', tag.addProject);
 
 console.log("Server hit - " + app.get('port'));
 http.createServer(app).listen(app.get('port'), function () {
