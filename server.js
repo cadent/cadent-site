@@ -18,6 +18,7 @@ app.post('/projects', project.addProject);
 
 app.get('/tags', tag.findAll);
 app.post('/tags', tag.addTag);
+app.delete('/tags/:id', tag.deleteTag);
 
 console.log("Server hit - " + app.get('port'));
 http.createServer(app).listen(app.get('port'), function () {

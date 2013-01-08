@@ -11,6 +11,7 @@ var port = process.env.PORT || 3000;
 var mongoUri = process.env.MONGOLAB_URI;
 console.log( "start connection " + mongoUri + "  |  " + port );
 var database = null;
+var BSON = mongo.BSONPure;
 
 mongo.connect( mongoUri, {}, dbConnectCallback );
 
@@ -52,6 +53,21 @@ exports.addTag = function(req, res) {
         });
     });
 };
+
+exports.deleteTag = function(req, res) {
+    var id = req.params.id;
+    console.log('Deleting tag: ' + id);
+    db.collection('tags', function(err, collection) {
+        collection.remove({'_id':new BSON.ObjectID(id)}, {safe:true}, function(err, result) {
+            if (err) {
+                res.send({'error':'An error has occurred - ' + err});
+            } else {
+                console.log('' + result + ' document(s) deleted');
+                res.send(req.body);
+            }
+        });
+    });
+}
 
 /*
 var mongo = require('mongodb');
