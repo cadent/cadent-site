@@ -37,8 +37,8 @@ CADENT.App = Backbone.Router.extend({
         
         $('.content').append('<br><br>');
         
-        var tag = new CADENT.TagView();
-        $('.content').append(tag.el);
+       // var tag = new CADENT.TagView();
+        //$('.content').append(tag.el);
     },
     
     projects: function() {
