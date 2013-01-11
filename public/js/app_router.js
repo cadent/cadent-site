@@ -25,6 +25,10 @@ CADENT.App = Backbone.Router.extend({
         
         this.footerView = new CADENT.FooterView();
         $('.footer').html(this.footerView.el);
+        
+        // Adding to the CADENT namespace instead of CADENT.App because I think it is ultimately cleaner.
+        CADENT.projectListLoaded = false;
+        CADENT.projectList = new CADENT.ProjectCollection();
     },
     
     home : function () {
@@ -36,12 +40,16 @@ CADENT.App = Backbone.Router.extend({
         {
         	$(".content").append(this.homeListView.el);
         } else {
-			var projectList = new CADENT.ProjectCollection();
+			if(!CADENT.projectListLoaded){
+				CADENT.projectList.fetch({success: function(){
+	            
+		            this.homeListView = new CADENT.ProjectListView({model: CADENT.projectList,});
+		            $(".content").append(this.homeListView.el);
+		            CADENT.projectListLoaded = true;
+		        }});
+			}
 			
-	        projectList.fetch({success: function(){
-	            this.homeListView = new CADENT.ProjectListView({model: projectList,});
-	            $(".content").append(this.homeListView.el);
-	        }});
+	        
 		}
     },
     
@@ -71,10 +79,19 @@ CADENT.App = Backbone.Router.extend({
         
         $('.content').append('<br><br>');
         
+        if(!CADENT.projectListLoaded) {
+			CADENT.projectList.fetch({success: function(){
+	            $(".content").append(new CADENT.ProjectEditListView({model: CADENT.projectList,}).el);
+            	CADENT.projectListLoaded = true;
+	        }});
+		}
+		/*
         var projectList = new CADENT.ProjectCollection();
         projectList.fetch({success: function(){
             $(".content").append(new CADENT.ProjectEditListView({model: projectList,}).el);
+            CADENT.projectListLoaded = true;
         }});
+        */
     },
     
     editProject: function( pid ) {
