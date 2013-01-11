@@ -30,7 +30,14 @@ CADENT.App = Backbone.Router.extend({
         console.log('ROUTER :: setupApp');
         
         $('.content').append('<br><br>');
-
+		
+		if(!this.projectList) {
+        	this.projectList = new CADENT.ProjectCollection();
+        }
+        
+        this.projectList.fetch({success: function(){
+            $(".content").append(new CADENT.ProjectListView({model: projectList,}).el);
+        }});
         /*
         var proj = new CADENT.Project();
         this.adminView = new CADENT.AdminView({model:proj});
@@ -78,8 +85,11 @@ CADENT.App = Backbone.Router.extend({
         
         $('.content').append('<br><br>');
         
-        var projectList = new CADENT.ProjectCollection();
-        projectList.fetch({success: function(){
+        if(!this.projectList) {
+        	this.projectList = new CADENT.ProjectCollection();
+        }
+        
+        this.projectList.fetch({success: function(){
             $(".content").append(new CADENT.ProjectListView({model: projectList,}).el);
         }});
     },
