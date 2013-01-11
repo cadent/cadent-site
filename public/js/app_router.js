@@ -84,7 +84,7 @@ CADENT.App = Backbone.Router.extend({
         }});
     },
     
-    edit: function( pid ) {
+    editProject: function( pid ) {
     	console.log('edit id: ' + pid);
     }
 });
