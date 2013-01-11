@@ -12,7 +12,8 @@ CADENT.ApiVersion = 'v1';
 // Main App
 CADENT.App = Backbone.Router.extend({
     routes: {
-        ""					: "setupApp",
+        ""					: "home",
+        "home"				: "home",
         "edit"				: "edit",
         "edit/project/:id"	: "editProject"
     },
@@ -25,7 +26,7 @@ CADENT.App = Backbone.Router.extend({
         $('.footer').html(this.footerView.el);
     },
     
-    setupApp: function () {
+    home: function () {
         console.log('ROUTER :: setupApp');
         
         $('.content').append('<br><br>');
