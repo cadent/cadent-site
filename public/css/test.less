@@ -1,0 +1,51 @@
+.txtNormal {
+  font-family: 'Open Sans' !important;
+  font-style: normal;
+  font-weight: 400;
+}
+
+@deepRed: #a93a03;
+@deepOrange: #e67b10;
+@deepBrown: #763c08;
+@txtLight: #fff;
+
+html, body{
+    margin:0;
+    padding:0;
+    background-color: rgba(255, 255, 255, 0.46);
+    min-width:100%;
+    min-height:100%;
+    height:auto;
+    width:auto;
+    .txtNormal;
+    font-size: 18px;
+    color: @deepBrown;    
+}
+
+#container
+{
+    position: absolute;
+    height: auto;
+    border: solid 1px @deepBrown;
+    
+    #contents {
+      position: static;
+      width: 100%;
+      height: auto;
+      min-height: 200px;
+      padding: 10px;
+      
+      .imgHolder {
+        float: left;
+        margin: 10px;
+        width: 300px;
+        height: 200px;
+        border: solid 1px @deepBrown;
+      }
+    }
+}
+
+img.resize{
+    width:540px; /* you can use % */
+    height: auto;
+}

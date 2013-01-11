@@ -31,11 +31,11 @@ function handleError( error )
 
 exports.findAll = function(req, res) {
 	console.log('projects/findAll: ');
-//    db.collection('wines', function(err, collection) {
-//        collection.find().toArray(function(err, items) {
-            res.send('projects/findAll :: success');
-//        });
-//    });
+    db.collection('projects', function(err, collection) {
+        collection.find().toArray(function(err, items) {
+            res.send(items);
+        });
+    });
 };
 
 exports.addProject = function(req, res) {
