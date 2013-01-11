@@ -13,15 +13,15 @@ CADENT.ProjectListView = Backbone.View.extend({
 		//var endPos = Math.min(startPos + 8, len);
 
 		//$(this.el).html('<ul class="thumbnails"></ul>');
-		//var str = 'PROJECTS<br><br>';
-		var str = JSON.stringify(this.model, undefined, 2);
-		/*
+		var str = 'PROJECTS<br><br>';
+		//var str = JSON.stringify(this.model, undefined, 2);
+		
         for (var i = 0; i < len; i++) {
-            str += projects[i].name + '<br>';
+            str.concat(projects[i].name, '<br>');
             
             //$('.thumbnails', this.el).append(new WineListItemView({model: wines[i]}).render().el);
         }
-        */
+        
 		$(this.el).html(str);
        // $(this.el).append(new Paginator({model: this.model, page: this.options.page}).render().el);
 
