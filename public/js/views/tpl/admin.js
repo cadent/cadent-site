@@ -2,8 +2,7 @@ CADENT.AdminView = Backbone.View.extend({
 
     events: {
 		'click #b_project_submit'	: 'addProject',
-		'click #b_test			'	: 'tester',
-		"change"        			: "change",
+		"change"        			: "change"
 	},
 	
     initialize: function () {
@@ -39,10 +38,6 @@ CADENT.AdminView = Backbone.View.extend({
                 console.log('Error Saving');
             }
         });
-	},
-	
-	tester : function( e ) {
-		
 	}
 
 });

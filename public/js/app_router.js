@@ -17,16 +17,19 @@ CADENT.App = Backbone.Router.extend({
         "edit/project/:id"	: "editProject"
     },
     
-    setupApp: function () {
-        console.log('ROUTER :: setupApp');
-        
+    initialize: function () {
         this.headerView = new CADENT.HeaderView();
         $('.header').html(this.headerView.el);
         
-        $('.content').append('<br><br>');
-        
         this.footerView = new CADENT.FooterView();
         $('.footer').html(this.footerView.el);
+    },
+    
+    setupApp: function () {
+        console.log('ROUTER :: setupApp');
+        
+        $('.content').append('<br><br>');
+
         /*
         var proj = new CADENT.Project();
         this.adminView = new CADENT.AdminView({model:proj});
@@ -55,14 +58,10 @@ CADENT.App = Backbone.Router.extend({
     edit: function() {
     	console.log('ROUTER :: edit');
         
-        this.headerView = new CADENT.HeaderView();
-        $('.header').html(this.headerView.el);
-        
-        this.footerView = new CADENT.FooterView();
-        $('.footer').html(this.footerView.el);
-        
-        var proj = new CADENT.Project();
-        this.adminView = new CADENT.AdminView({model:proj});
+        if (!this.adminView) {
+            var proj = new CADENT.Project();
+        	this.adminView = new CADENT.AdminView({model:proj});
+        }
 		$('.content').html(this.adminView.el);
         
         $('.content').append('<br><br>');
