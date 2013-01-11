@@ -29,7 +29,7 @@ CADENT.App = Backbone.Router.extend({
     home: function () {
         console.log('ROUTER :: setupApp');
         
-        $('.content').append('<br><br>');
+        $('.content').html('<br><br>');
 		
 		var projectList = new CADENT.ProjectCollection();
         projectList.fetch({success: function(){
