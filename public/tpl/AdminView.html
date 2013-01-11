@@ -2,19 +2,21 @@
 	<strong>Admin Template</strong>
 	<br><br>
 	<form id="form_project" class="forms" action="#">
-		<input id="name" name="name" type="text" placeholder="Project Name" required/>
+		<i><%= _id === null ? '' : _id %></i>
+		<br/>
+		<input id="name" name="name" value="<%= name %>" type="text" placeholder="Project Name" required/>
 		<br>
-		<input id="subtitle" name="subtitle" type="text" placeholder="Project Subtitle" required/>
+		<input id="subtitle" name="subtitle" value="<%= subtitle %>" type="text" placeholder="Project Subtitle" required/>
 		<br>
-		<input id="pid" name="pid" type="text" placeholder="Project ID (string)" required/>
+		<input id="pid" name="pid" value="<%= pid %>" type="text" placeholder="Project ID (string)" required/>
 		<br>
-		<input id="url" name="url" type="url" placeholder="Project URL" />
+		<input id="url" name="url" value="<%= url %>" type="url" placeholder="Project URL" />
 		<br>
-		<input id="role" name="role" type="text" placeholder="Roles" />
+		<input id="role" name="role" value="<%= role %>" type="text" placeholder="Roles" />
 		<br>
-		<input id="tags" name="tags" type="text" placeholder="Tags" />
+		<input id="tags" name="tags" value="<%= tags %>" type="text" placeholder="Tags" />
 		<br>
-		<textarea id="desc" name="desc" rows="30"></textarea>
+		<textarea id="desc" name="desc" rows="30"><%= desc %></textarea>
 		<br>
 		<input id="b_project_submit" type="submit" value="Save"/>
 	</form>
