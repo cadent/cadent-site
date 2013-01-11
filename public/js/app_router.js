@@ -12,8 +12,9 @@ CADENT.ApiVersion = 'v1';
 // Main App
 CADENT.App = Backbone.Router.extend({
     routes: {
-        "": "setupApp",
-        "edit": "edit"
+        ""					: "setupApp",
+        "edit"				: "edit",
+        "edit/project/:id"	: "editProject"
     },
     
     setupApp: function () {
@@ -81,5 +82,9 @@ CADENT.App = Backbone.Router.extend({
         projectList.fetch({success: function(){
             $(".content").append(new CADENT.ProjectListView({model: projectList,}).el);
         }});
+    },
+    
+    edit: function( pid ) {
+    	console.log('edit id: ' + pid);
     }
 });
