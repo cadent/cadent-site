@@ -31,7 +31,7 @@ function handleError( error )
 
 exports.findAll = function(req, res) {
 	console.log('projects/findAll: ');
-    db.collection('projects', function(err, collection) {
+    database.collection('projects', function(err, collection) {
         collection.find().toArray(function(err, items) {
             res.send(items);
         });
