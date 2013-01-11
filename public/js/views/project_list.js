@@ -19,7 +19,7 @@ CADENT.ProjectListView = Backbone.View.extend({
         for (var i = 0; i < len; i++) {
             //str.concat(projects[i].name, '<br>');
             
-            $('.thumbnails', this.el).append(new ProjectListItemView({model: projects[i]}).render().el);
+            $('.thumbnails', this.el).append(new CADENT.ProjectListItemView({model: projects[i]}).render().el);
         }
         
 		//$(this.el).html(str);
