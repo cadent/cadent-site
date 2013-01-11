@@ -14,7 +14,7 @@ CADENT.App = Backbone.Router.extend({
     routes: {
         ""					: "home",
         "home"				: "home",
-        "detail/:id"		: "detail"
+        "detail/:id"		: "detail",
         "edit"				: "edit",
         "edit/project/:id"	: "editProject"
     },
