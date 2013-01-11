@@ -27,37 +27,21 @@ CADENT.App = Backbone.Router.extend({
     },
     
     home: function () {
-        console.log('ROUTER :: setupApp');
+        console.log('ROUTER :: home');
         
         $('.content').html('<br><br>');
-		
-		var projectList = new CADENT.ProjectCollection();
-        projectList.fetch({success: function(){
-            $(".content").append(new CADENT.ProjectListView({model: projectList,}).el);
-        }});
-        /*
-        var proj = new CADENT.Project();
-        this.adminView = new CADENT.AdminView({model:proj});
-		$('.content').html(this.adminView.el);
         
-        $('.content').append('<br><br>');
-        
-        var tagEdit = new CADENT.Tag();
-        this.tagEditView = new CADENT.TagEditView({model:tagEdit});
-        $('.content').append(this.tagEditView.el);
-        
-        $('.content').append('<br><br>');
-        
-       var tag = new CADENT.TagView();
-        $('.content').append(tag.el);
-        
-        $('.content').append('<br><br>');
-        
-        var projectList = new CADENT.ProjectCollection();
-        projectList.fetch({success: function(){
-            $(".content").append(new CADENT.ProjectListView({model: projectList,}).el);
-        }});
-        */
+        if(this.homeListView)
+        {
+        	$(".content").append(this.homeListView.el);
+        } else {
+			var projectList = new CADENT.ProjectCollection();
+			
+	        projectList.fetch({success: function(){
+	            this.homeListView = new CADENT.ProjectListView({model: projectList,});
+	            $(".content").append(this.homeListView.el);
+	        }});
+		}
     },
     
     edit: function() {
