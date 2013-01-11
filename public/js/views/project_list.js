@@ -16,7 +16,7 @@ CADENT.ProjectListView = Backbone.View.extend({
 		var str = 'PROJECTS<br><br>';
 		
         for (var i = 0; i < len; i++) {
-            str += projects[i];
+            str += projects[i].name + '<br>';
             
             //$('.thumbnails', this.el).append(new WineListItemView({model: wines[i]}).render().el);
         }

@@ -40,9 +40,11 @@ CADENT.App = Backbone.Router.extend({
        var tag = new CADENT.TagView();
         $('.content').append(tag.el);
         
+        $('.content').append('<br><br>');
+        
         var projectList = new CADENT.ProjectCollection();
         projectList.fetch({success: function(){
-            $(".content").html(new CADENT.ProjectListView({model: projectList,}).el);
+            $(".content").append(new CADENT.ProjectListView({model: projectList,}).el);
         }});
     },
     
