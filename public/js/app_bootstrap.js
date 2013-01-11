@@ -8,7 +8,8 @@ DRIVATIV.utils.loadTemplate([
 	{name:'AdminView', path:'tpl', ext:'html'},
 	{name:'TagEditView', path:'tpl', ext:'html'},
 	{name:'TagView', path:'tpl', ext:'html'},
-	{name:'ProjectListItemView', path:'tpl', ext:'html'}
+	{name:'ProjectListItemView', path:'tpl', ext:'html'},
+	{name:'ProjectEditListItemView', path:'tpl', ext:'html'}
 	], function() {
     	CADENT.app = new CADENT.App();
 		CADENT.appView = new CADENT.AppView();

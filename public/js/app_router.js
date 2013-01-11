@@ -14,11 +14,12 @@ CADENT.App = Backbone.Router.extend({
     routes: {
         ""					: "home",
         "home"				: "home",
+        "detail/:id"		: "detail"
         "edit"				: "edit",
         "edit/project/:id"	: "editProject"
     },
     
-    initialize: function () {
+    initialize : function () {
         this.headerView = new CADENT.HeaderView();
         $('.header').html(this.headerView.el);
         
@@ -26,7 +27,7 @@ CADENT.App = Backbone.Router.extend({
         $('.footer').html(this.footerView.el);
     },
     
-    home: function () {
+    home : function () {
         console.log('ROUTER :: home');
         
         $('.content').html('<br><br>');
@@ -44,7 +45,11 @@ CADENT.App = Backbone.Router.extend({
 		}
     },
     
-    edit: function() {
+    detail : function( pid ) {
+    	console.log('detail id: ' + pid);
+    },
+    
+    edit : function() {
     	console.log('ROUTER :: edit');
         
         if (!this.adminView) {
@@ -68,7 +73,7 @@ CADENT.App = Backbone.Router.extend({
         
         var projectList = new CADENT.ProjectCollection();
         projectList.fetch({success: function(){
-            $(".content").append(new CADENT.ProjectListView({model: projectList,}).el);
+            $(".content").append(new CADENT.ProjectEditListView({model: projectList,}).el);
         }});
     },
     
