@@ -12,7 +12,7 @@ CADENT.ProjectListView = Backbone.View.extend({
 		//var startPos = (this.options.page - 1) * 8;
 		//var endPos = Math.min(startPos + 8, len);
 
-		$(this.el).html('<div class="thumbnails"></div>');
+		$(this.el).html('<ul class="thumbnails"></ul>');
 		//$(this.el).html('<ul class="thumbnails"></ul>');
 		//var str = 'PROJECTS<br><br>';
 		//var str = JSON.stringify(this.model, undefined, 2);
@@ -32,7 +32,7 @@ CADENT.ProjectListView = Backbone.View.extend({
 
 CADENT.ProjectListItemView = Backbone.View.extend({
 
-    tagName: "div",
+    tagName: "li",
 
     initialize: function () {
         //this.model.bind("change", this.render, this);
