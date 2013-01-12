@@ -81,9 +81,17 @@ CADENT.App = Backbone.Router.extend({
         
         if(!CADENT.projectListLoaded) {
 			CADENT.projectList.fetch({success: function(){
-	            $(".content").append(new CADENT.ProjectEditListView({model: CADENT.projectList,}).el);
+	            if(!CADENT.ProjectEditListView) {
+	            	CADENT.ProjectEditListView = new CADENT.ProjectEditListView({model: CADENT.projectList})
+	            }
+	            $(".content").append(CADENT.ProjectEditListView.el);
             	CADENT.projectListLoaded = true;
 	        }});
+		} else {
+			if(!CADENT.ProjectEditListView) {
+            	CADENT.ProjectEditListView = new CADENT.ProjectEditListView({model: CADENT.projectList})
+            }
+			$(".content").append(CADENT.ProjectEditListView.el);
 		}
 		/*
         var projectList = new CADENT.ProjectCollection();
