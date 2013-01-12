@@ -34,8 +34,6 @@ CADENT.App = Backbone.Router.extend({
     home : function () {
         console.log('ROUTER :: home');
         
-        $('.content').html('<br><br>');
-        
         if(this.homeListView)
         {
         	$(".content").append(this.homeListView.el);
@@ -47,9 +45,9 @@ CADENT.App = Backbone.Router.extend({
 		            $(".content").append(this.homeListView.el);
 		            CADENT.projectListLoaded = true;
 		        }});
+			} else {
+				$(".content").append(this.homeListView.el);
 			}
-			
-	        
 		}
     },
     
