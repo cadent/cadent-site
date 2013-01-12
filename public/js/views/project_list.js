@@ -40,6 +40,7 @@ CADENT.ProjectListItemView = Backbone.View.extend({
     },
 
     render: function () {
+        $(this.el).addClass('project-thumbnail');
         $(this.el).addClass('thumbnail').html(this.template(this.model.toJSON()));
         return this;
     }
