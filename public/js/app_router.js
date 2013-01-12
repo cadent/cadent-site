@@ -36,17 +36,17 @@ CADENT.App = Backbone.Router.extend({
         
         if(this.homeListView)
         {
-        	$(".span9").append(this.homeListView.el);
+        	$(".main-content").append(this.homeListView.el);
         } else {
 			if(!CADENT.projectListLoaded){
 				CADENT.projectList.fetch({success: function(){
 	            
 		            this.homeListView = new CADENT.ProjectListView({model: CADENT.projectList,});
-		            $(".span9").append(this.homeListView.el);
+		            $(".main-content").append(this.homeListView.el);
 		            CADENT.projectListLoaded = true;
 		        }});
 			} else {
-				$(".span9").append(this.homeListView.el);
+				$(".main-content").append(this.homeListView.el);
 			}
 		}
     },
@@ -62,34 +62,34 @@ CADENT.App = Backbone.Router.extend({
             var proj = new CADENT.Project();
         	this.adminView = new CADENT.AdminView({model:proj});
         }
-		$('.span9').html(this.adminView.el);
+		$('.main-content').html(this.adminView.el);
         
-        $('.span9').append('<br><br>');
+        $('.main-content').append('<br><br>');
         
         var tagEdit = new CADENT.Tag();
         this.tagEditView = new CADENT.TagEditView({model:tagEdit});
-        $('.span9').append(this.tagEditView.el);
+        $('.main-content').append(this.tagEditView.el);
         
-        $('.span9').append('<br><br>');
+        $('.main-content').append('<br><br>');
         
        var tag = new CADENT.TagView();
-        $('.span9').append(tag.el);
+        $('.main-content').append(tag.el);
         
-        $('.span9').append('<br><br>');
+        $('.main-content').append('<br><br>');
         
         if(!CADENT.projectListLoaded) {
 			CADENT.projectList.fetch({success: function(){
 	            if(!CADENT.ProjectEditListView) {
 	            	CADENT.ProjectEditListView = new CADENT.ProjectEditListView({model: CADENT.projectList})
 	            }
-	            $(".span9").append(CADENT.ProjectEditListView.el);
+	            $(".main-content").append(CADENT.ProjectEditListView.el);
             	CADENT.projectListLoaded = true;
 	        }});
 		} else {
 			if(!CADENT.ProjectEditListView) {
             	CADENT.ProjectEditListView = new CADENT.ProjectEditListView({model: CADENT.projectList})
             }
-			$(".span9").append(CADENT.ProjectEditListView.el);
+			$(".main-content").append(CADENT.ProjectEditListView.el);
 		}
 		/*
         var projectList = new CADENT.ProjectCollection();
