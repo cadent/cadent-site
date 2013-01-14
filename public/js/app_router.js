@@ -21,7 +21,7 @@ CADENT.App = Backbone.Router.extend({
     
     initialize : function () {
         this.headerView = new CADENT.HeaderView();
-        $('.header').html(this.headerView.el);
+        $('#header').html(this.headerView.el);
         
         this.footerView = new CADENT.FooterView();
         $('.footer').html(this.footerView.el);
@@ -34,6 +34,10 @@ CADENT.App = Backbone.Router.extend({
     home : function () {
         console.log('ROUTER :: home');
         
+        this.homeListView = new CADENT.ProjectListView({model: CADENT.projectList});
+        $(".main-content").append(this.homeListView.el);
+        CADENT.projectListLoaded = true;
+		 /*          
         if(this.homeListView)
         {
         	$(".main-content").append(this.homeListView.el);
@@ -49,6 +53,7 @@ CADENT.App = Backbone.Router.extend({
 				$(".main-content").append(this.homeListView.el);
 			}
 		}
+		*/
     },
     
     detail : function( pid ) {
