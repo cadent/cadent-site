@@ -14,6 +14,8 @@ CADENT.App = Backbone.Router.extend({
     routes: {
         ""					: "home",
         "home"				: "home",
+        "about"				: "home",
+        "projects"			: "projects",
         "detail/:id"		: "detail",
         "edit"				: "edit",
         "edit/project/:id"	: "editProject"
@@ -34,8 +36,40 @@ CADENT.App = Backbone.Router.extend({
     home : function () {
         console.log('ROUTER :: home');
         
+        this.homeView = new CADENT.HomeView();
+        $(".main-content").html(this.homeView.el);
+        /*
         this.homeListView = new CADENT.ProjectListView({model: CADENT.projectList});
         $(".main-content").append(this.homeListView.el);
+        CADENT.projectListLoaded = true;
+        */
+       
+       
+       
+		 /*          
+        if(this.homeListView)
+        {
+        	$(".main-content").append(this.homeListView.el);
+        } else {
+			if(!CADENT.projectListLoaded){
+				CADENT.projectList.fetch({success: function(){
+	            
+		            this.homeListView = new CADENT.ProjectListView({model: CADENT.projectList,});
+		            $(".main-content").append(this.homeListView.el);
+		            CADENT.projectListLoaded = true;
+		        }});
+			} else {
+				$(".main-content").append(this.homeListView.el);
+			}
+		}
+		*/
+    },
+    
+    projects : function () {
+        console.log('ROUTER :: projects');
+        
+        this.projectListView = new CADENT.ProjectListView({model: CADENT.projectList});
+        $(".main-content").html(this.projectListView.el);
         CADENT.projectListLoaded = true;
 		 /*          
         if(this.homeListView)
@@ -55,6 +89,7 @@ CADENT.App = Backbone.Router.extend({
 		}
 		*/
     },
+    
     
     detail : function( pid ) {
     	console.log('detail id: ' + pid);

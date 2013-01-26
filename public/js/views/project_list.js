@@ -28,9 +28,12 @@ CADENT.ProjectImgThumbView = Backbone.View.extend({
 
     tagName: 'div',
     className: 'project-thumb-img',
+    selected: false,
     
     events: {
-		'click': 'selectImg'
+		'click'		: 'selectImg',
+		'mouseover' : 'onImg',
+		'mouseout' 	: 'offImg'
 	},
 	
     initialize: function () {
@@ -40,24 +43,53 @@ CADENT.ProjectImgThumbView = Backbone.View.extend({
     render: function () {
         if(this.model.get('selected')) {
         	$(this.el).html('<img src="' + this.model.get('thumb_url') + '">');
-        	$(this.el).addClass('thumb-selected');
+        	this.selected = true;
         } else {
         	$(this.el).html('<img src="' + this.model.get('thumb_url') + '">');
+        	$(this.el).addClass('thumb-deselected');
+        	$(this.el).find('img').fadeTo(500, 0.5);
         }
         
         return this;
     },
     
+    onImg: function( e ) {
+    	if(!this.selected) {
+    		$(this.el).find('img').fadeTo(500, 1);
+    	}
+    },
+    
+    offImg: function( e ) {
+    	if(!this.selected) {
+    		$(this.el).find('img').fadeTo(500, 0.5);
+    	}
+    },
+    
     selectImg: function() {
+    	this.selected = true;
     	var f = this.model.get('selectCallback');
+    	var heroImg = this.model.get('tgtImg');
+    	var new_url = this.model.get('img_url');
+    	
+    	$(this.el).find('img').fadeTo(500, 1);
+
+    	
+	   heroImg.fadeOut(300, function(){
+	      heroImg.attr('src',new_url).bind('onreadystatechange load', function(){
+	         if (this.complete) heroImg.fadeIn(300);
+      		});
+   		});
+    	
     	if(f != null) {
     		f(this);
-    		$(this.el).addClass('thumb-selected');
+    		$(this.el).removeClass('thumb-deselected');
     	}
     },
     
     deselectImg: function() {
-    	$(this.el).removeClass('thumb-selected');
+    	this.selected = false;
+    	$(this.el).addClass('thumb-deselected');
+    	$(this.el).find('img').fadeTo(500, 0.5);
     }
 
 });
@@ -69,33 +101,37 @@ CADENT.ProjectListItemView = Backbone.View.extend({
     selectedThumb: null,
 	
 	events: {
-		'click .project-hero-img > img'	: 'expandView'
+		'click .project-hero-img > img'	: 'expandView',
+		'click .details-button'			: 'expandView'
 	},
 	
     initialize: function () {
         //this.model.bind("change", this.render, this);
         //this.model.bind("destroy", this.close, this);
+       // this.b_details = $('#b_details span');
     },
 
     render: function () {
         $(this.el).html(this.template(this.model.toJSON()));
         //console.log('imgs: ' + this.model.get('imgs'));
         
-    	
+    	var p_img = $(this.el).children('.project-hero-img');
+        var img_list = p_img.children('.project-thumbnail-list');
+        var heroImg = p_img.children('.hero-img');
+        heroImg.addClass('greyscale-img');
+        //console.log('heroImg: ' + heroImg + ', ' + heroImg.attr('src'));
+        	
     	var images = this.model.get('imgs');
-    	if(images)
-    	{
+    	if(images) {
+    		heroImg.attr('src','img/projects/' + images[0]);
     		var len = images.length;
-    		
-    		var p_img = $(this.el).children('.project-hero-img');
-        	var img_list = p_img.children('.project-thumbnail-list');
         	var m;
         	
 	    	for (var i = 0; i < len; i++) {
 				if(i == 0) {
-					m = new CADENT.ThumbImg({thumb_url: 'img/thumbnails/' + images[i], img_url: 'img/projects/' + images[i], selected:true, selectCallback:this.selectImg});
+					m = new CADENT.ThumbImg({thumb_url: 'img/thumbnails/' + images[i], img_url: 'img/projects/' + images[i], selected:true, selectCallback:this.selectImg, tgtImg:heroImg});
 				} else {
-					m = new CADENT.ThumbImg({thumb_url: 'img/thumbnails/' + images[i], img_url: 'img/projects/' + images[i], selected:false, selectCallback:this.selectImg});
+					m = new CADENT.ThumbImg({thumb_url: 'img/thumbnails/' + images[i], img_url: 'img/projects/' + images[i], selected:false, selectCallback:this.selectImg, tgtImg:heroImg});
 				}
 				
 				var v = new CADENT.ProjectImgThumbView({model:m});
@@ -112,16 +148,14 @@ CADENT.ProjectListItemView = Backbone.View.extend({
     		this.selectedThumb.deselectImg();
     	}
     	this.selectedThumb = imgView;
-    	$(this.el).children('.project-hero-img img').attr('src', this.selectedThumb.model.get('img_url'));
-    	//console.log('select: ' + imgView);
     },
     
     expandView: function() {
     	var last_project = null;
     	
     	if(CADENT.activeProject) {
-    		last_project = CADENT.activeProject;
-    		//CADENT.activeProject.collapseView();
+    		//last_project = CADENT.activeProject;
+    		CADENT.activeProject.collapseView();
     	}
     	
     	CADENT.activeProject = this;
@@ -129,12 +163,21 @@ CADENT.ProjectListItemView = Backbone.View.extend({
     	
     	var p_img = $(this.el).children('.project-hero-img');
     	p_img.removeClass('project-hero-img-collapsed').addClass('project-hero-img-expanded');
-    	
-    	p_img.children('.project-thumbnail-list').fadeIn('slow', function() {
-    			if(last_project) last_project.collapseView();
-    		});
+    	p_img.children('.project-thumbnail-list').fadeIn('slow');
+    	var heroImg = p_img.children('.hero-img');
+    	heroImg.removeClass('greyscale-img');
+    	//p_img.children('.project-thumbnail-list').fadeIn('slow', function() {
+    	//		if(last_project) last_project.collapseView();
+    	//	});
     	
     	$(this.el).children('.project-desc').removeClass('project-desc-minimized').addClass('project-desc-expanded');
+    	//this.$b_details.removeClass('details-button');
+    	//$('#b_details').removeClass('details-button');
+    	//$('#b_details span').html('- Less');
+    	//this.b_details.html('- Less');
+    	console.log('B: ' + $('#b_details').text());
+    	
+    	//$(this.el).find('details-button').val('- Less');
     },
     
     collapseView: function() {
@@ -144,8 +187,11 @@ CADENT.ProjectListItemView = Backbone.View.extend({
     	var p_img = $(this.el).children('.project-hero-img');
     	p_img.removeClass('project-hero-img-expanded').addClass('project-hero-img-collapsed');
     	p_img.children('.project-thumbnail-list').fadeOut('fast');
-    	
+    	var heroImg = p_img.children('.hero-img');
+    	heroImg.addClass('greyscale-img');
     	$(this.el).children('.project-desc').removeClass('project-desc-expanded').addClass('project-desc-minimized');
+    	//$(this.el).find('details-button').val('+ More');
+    	console.log('B: ' + $(this.el).find('details-button'));
     }
 
 });

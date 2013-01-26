@@ -3,6 +3,7 @@
  */
 
 DRIVATIV.utils.loadTemplate([
+	{name:'HomeView', path:'tpl', ext:'html'},
 	{name:'HeaderView', path:'tpl', ext:'html'},
 	{name:'FooterView', path:'tpl', ext:'html'},
 	{name:'AdminView', path:'tpl', ext:'html'},
