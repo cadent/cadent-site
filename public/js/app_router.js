@@ -23,7 +23,7 @@ CADENT.App = Backbone.Router.extend({
     
     initialize : function () {
         this.headerView = new CADENT.HeaderView();
-        $('#header').html(this.headerView.el);
+        $('.header').html(this.headerView.el);
         
         this.footerView = new CADENT.FooterView();
         $('.footer').html(this.footerView.el);
