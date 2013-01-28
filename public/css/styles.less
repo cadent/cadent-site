@@ -127,6 +127,7 @@
 html, body {
     .txtNormal;
     color: @darkGrey;
+    text-shadow: 1px 1px 1px #fff;
     background: url(../img/texture.png) no-repeat top center,url(../img/background.jpg) repeat;
 }
 
@@ -149,23 +150,24 @@ html, body{
 */
 
 a {
-  color: @darkGrey;
+  color: @deepRed;
   text-decoration: none;
 }
 
 a:hover {
   color: @deepRed;
+  .border-bottom-grey-dotted;
   text-decoration: none;
 }
 
-:required {
-  border-color: @deepRed;
+//:required {
+//  border-color: @deepRed;
  /* -webkit-box-shadow: 0 0 5px rgba(0, 0, 255, .5);
   -moz-box-shadow: 0 0 5px rgba(0, 0, 255, .5);
   -o-box-shadow: 0 0 5px rgba(0, 0, 255, .5);
   -ms-box-shadow: 0 0 5px rgba(0, 0, 255, .5);
   box-shadow: 0 0 5px rgba(0, 0, 255, .5);*/
-}
+//}
 /*
 input[type=text], input[type=url] {
     font-size:16px; 
@@ -207,9 +209,6 @@ input[type=text], input[type=url] {
 .nav-inner {
   width: @defaultWidth;
   margin: 0 auto;
-  //margin-top: 0px;
-  //padding-top: 20px;
-  //padding-right: 75px;
   
   .nav-inner-selected {
     color:@deepRed !important;
@@ -231,9 +230,9 @@ input[type=text], input[type=url] {
   color:@darkGrey;
   margin-left: 30px;
   padding-bottom: 5px;
+  padding-top: 12px;
   text-decoration:none;
   .headerMain;
-  padding-top: 12px;
 }
 
 .nav-item:hover {
@@ -274,7 +273,7 @@ input[type=text], input[type=url] {
 }
 
 .top-intro {
-  line-height: 30px;
+  line-height: 36px;
   width: @defaultWidth;
   text-align: justify;
   margin-bottom: 60px;
@@ -408,6 +407,12 @@ input[type=text], input[type=url] {
      // margin-bottom: 10px;
       //border-bottom: 1px solid @mediumDarkGrey;
       //-webkit-box-shadow: 0 1px 0 @lightGrey;
+      .colophon-git {
+        margin-top: 18px;
+        font-size:20px;
+        .headerHandwriting;
+        
+      }
     }
   }
 }
