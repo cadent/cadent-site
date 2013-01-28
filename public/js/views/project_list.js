@@ -14,18 +14,18 @@ CADENT.ProjectListView = Backbone.View.extend({
 	render: function () {
 		
 // TESTING CODE - START
-/*
+
 		var len = 10;
 		$(this.el).html('<div id="about-cadent" class="spacer">Recent Projects</div><div id="b_view_github" class="details-button"><span>+ View this Site on GitHub</span></div><div class="project-thumbnails"></div>');
 
         for (var i = 0; i < len; i++) {
             $('.project-thumbnails', this.el).append(new CADENT.ProjectListItemView({model: new CADENT.Project()}).render().el);
         }
-*/
+
 // TESTING CODE - END
 
 // LIVE CODE - START
-        
+/*        
 		var projects = this.model.models;
 		var len = projects.length;
 		
@@ -34,7 +34,7 @@ CADENT.ProjectListView = Backbone.View.extend({
         for (var i = 0; i < len; i++) {
             $('.project-thumbnails', this.el).append(new CADENT.ProjectListItemView({model: projects[i]}).render().el);
         }
-
+*/
 // LIVE CODE - END
         return this;
    },
@@ -124,7 +124,7 @@ CADENT.ProjectListItemView = Backbone.View.extend({
 	
 	events: {
 		'click .project-hero-img > img'	: 'expandView',
-		'click .details-button'			: 'expandView'
+		'click .details-button'			: 'toggleView'
 	},
 	
     initialize: function () {
@@ -163,6 +163,21 @@ CADENT.ProjectListItemView = Backbone.View.extend({
 	        }
     	}
     	
+    	var tech_tags = this.model.get('tech');
+    	var role_tags = this.model.get('role');
+    	
+    	if(tech_tags) {
+    		for (var i = 0; i < tech_tags.length; i++) {
+	            $('.tag-list', this.el).append('<div class="tag-view tag-tech">' +  tech_tags[i] + '</div>');
+	        }
+    	}
+    	
+    	if(role_tags) {
+    		for (var i = 0; i < role_tags.length; i++) {
+	            $('.tag-list-role', this.el).append('<div class="tag-view tag-role">' +  role_tags[i] + '</div>');
+	        }
+    	}
+    	
         return this;
     },
     
@@ -171,6 +186,19 @@ CADENT.ProjectListItemView = Backbone.View.extend({
     		this.selectedThumb.deselectImg();
     	}
     	this.selectedThumb = imgView;
+    },
+    
+    toggleView: function() {
+		if(CADENT.activeProject) {
+			if(CADENT.activeProject == this) {
+				this.collapseView();
+				CADENT.activeProject = null;
+			} else {
+				this.expandView();
+			}
+		} else {
+			this.expandView();
+		}
     },
     
     expandView: function() {
@@ -186,28 +214,18 @@ CADENT.ProjectListItemView = Backbone.View.extend({
     	
     	var p_img = $(this.el).children('.project-hero-img');
     	p_img.removeClass('project-hero-img-collapsed').addClass('project-hero-img-expanded');
-    	//p_img.children('.project-thumbnail-list').fadeIn('slow');
+    	
     	var heroImg = p_img.children('.hero-img');
     	heroImg.removeClass('greyscale-img');
     	p_img.children('.project-thumbnail-list').fadeIn('slow', function() {
     			var targetOffset = CADENT.activeProject.$el.offset().top - 65;
-		    	console.log('el: ' + CADENT.activeProject.$el.offset().top + ', targetOffset: ' + targetOffset);
 				$('html, body').animate({
 					scrollTop: targetOffset
 				}, 1000);
-    			//if(last_project) last_project.collapseView();
     	});
     	
     	$(this.el).children('.project-desc').removeClass('project-desc-minimized').addClass('project-desc-expanded');
-    	//this.$b_details.removeClass('details-button');
-    	//$('#b_details').removeClass('details-button');
-    	//$('#b_details span').html('- Less');
-    	//this.b_details.html('- Less');
-    	console.log('B: ' + $('#b_details').text());
-    	
-    	//$(this.el).find('details-button').val('- Less');
-    	
-    	
+    	$('#b_details', this.el).text('Hide Details');
     },
     
     collapseView: function() {
@@ -220,8 +238,7 @@ CADENT.ProjectListItemView = Backbone.View.extend({
     	var heroImg = p_img.children('.hero-img');
     	heroImg.addClass('greyscale-img');
     	$(this.el).children('.project-desc').removeClass('project-desc-expanded').addClass('project-desc-minimized');
-    	//$(this.el).find('details-button').val('+ More');
-    	console.log('B: ' + $(this.el).find('details-button'));
+    	$('#b_details', this.el).text('+ Show Details');
     }
 
 });

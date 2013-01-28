@@ -338,7 +338,6 @@ input[type=text], input[type=url] {
 
 .services-header-bottom {
   padding-top: 5px;
-  //padding-bottom: 12px;
   margin-bottom: 10px;
   border-bottom: 1px solid @mediumDarkGrey;
   -webkit-box-shadow: 0 1px 0 @lightGrey;
@@ -356,15 +355,9 @@ input[type=text], input[type=url] {
   margin-bottom: 10px;
   border: 1px solid rgb(187, 187, 187);
   -webkit-box-shadow: 0 1px 0 #fff;
-  //font-size: 14px;
   text-shadow: 0px 1px 1px #fff;
-  //background-color: rgb(204, 204, 204);
   color: @darkGrey;
-  
-  //border: 1px solid @mediumDarkGrey;
-  //-webkit-box-shadow: 0 1px 0 @lightGrey;
   font-size: 12px;
- // text-shadow: 1px 1px 1px #fff;
   .border-radius(10px);
   .txtSemi;
 }
@@ -380,14 +373,12 @@ input[type=text], input[type=url] {
 
 .footer-inner-details {
   border-top: 1px solid @mediumDarkGrey;
-  //background-color: @darkGrey;
   
   .footer-details {
     width: @defaultWidth;
     height: 150px;
     margin: 0 auto;
     padding-top: 10px;
-    //background-color: @darkGrey;
     
     .footer-contact {
       text-align: center;
@@ -585,10 +576,17 @@ input[type=text], input[type=url] {
 
 .tag-list {
   //margin: 12px 0px;
-  padding: 10px 0px 10px 0px;
+  padding: 16px 0px 12px 0px;
   height: 20px;
   
   //.border-bottom-grey-dashed;
+}
+
+.tag-list-role {
+  //margin: 12px 0px;
+  //padding: 16px 0px 10px 0px;
+  height: 35px;
+  .border-bottom-grey-dashed;
 }
 
 .tag-view {
@@ -596,23 +594,24 @@ input[type=text], input[type=url] {
   margin: 0 auto;
   float: left;
   margin-right: 6px;
-  border: 1px solid @mediumGrey;
+  border: 1px solid rgb(187, 187, 187);
   -webkit-box-shadow: 0 1px 0 #fff;
+  text-shadow: 0px 1px 1px #fff;
   font-size: 10px;
-  text-shadow: 1px 1px 1px #fff;
+  color: @darkGrey;
   .border-radius(10px);
   .txtSemi;
 }
 
 .tag-tech {
-  background-color: #eae5da;
-  
+  background-color: rgb(220, 220, 220);  
 }
 
 .tag-role {
-  background-color: #eaeaea;
-  color: @darkGrey;
+  background-color: rgb(245, 245, 245);
+  border: 1px solid rgb(211, 211, 211);
 }
+
 
 // ----------------------------------------------------
 // FILTERS
