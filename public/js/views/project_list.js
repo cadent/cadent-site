@@ -3,6 +3,10 @@ CADENT.activeProject = null;
 
 CADENT.ProjectListView = Backbone.View.extend({
 
+	events: {
+		'click #b_view_github'	: 'visitGithub'
+	},
+	
 	initialize: function () {
 	    this.render();
 	},
@@ -11,8 +15,8 @@ CADENT.ProjectListView = Backbone.View.extend({
 		var projects = this.model.models;
         var len = 10;
 		//var len = projects.length;
-		
-		$(this.el).html('<div class="project-thumbnails"></div>');
+		//'<div id="about-cadent" class="spacer">projects</div>'
+		$(this.el).html('<div id="about-cadent" class="spacer">Recent Projects</div><div id="b_view_github" class="details-button"><span>+ View this Site on GitHub</span></div><div class="project-thumbnails"></div>');
 
 		
         for (var i = 0; i < len; i++) {
@@ -21,6 +25,10 @@ CADENT.ProjectListView = Backbone.View.extend({
         }
 
         return this;
+   },
+    
+    visitGithub : function () {
+    	console.log('visit github');
     }
 });
 
@@ -41,6 +49,7 @@ CADENT.ProjectImgThumbView = Backbone.View.extend({
     },
 
     render: function () {
+        
         if(this.model.get('selected')) {
         	$(this.el).html('<img src="' + this.model.get('thumb_url') + '">');
         	this.selected = true;
@@ -84,6 +93,10 @@ CADENT.ProjectImgThumbView = Backbone.View.extend({
     		f(this);
     		$(this.el).removeClass('thumb-deselected');
     	}
+    	
+		$('html, body').animate({
+			scrollTop: $(this.el).offset().top
+		}, 2000);
     },
     
     deselectImg: function() {
@@ -112,6 +125,7 @@ CADENT.ProjectListItemView = Backbone.View.extend({
     },
 
     render: function () {
+        $(this.el).attr('id', this.model.get('pid'));
         $(this.el).html(this.template(this.model.toJSON()));
         //console.log('imgs: ' + this.model.get('imgs'));
         

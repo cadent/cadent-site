@@ -26,6 +26,7 @@ CADENT.ProjectCollection = Backbone.Collection.extend({
     model: CADENT.Project,
 
     url: "/projects"
+    
 
 });
 

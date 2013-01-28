@@ -8,6 +8,7 @@ CADENT = window.CADENT || {};
 CADENT.rootUrl = '';
 CADENT.ApiUrl = '';
 CADENT.ApiVersion = 'v1';
+CADENT.activeButton = null;
 
 // Main App
 CADENT.App = Backbone.Router.extend({
@@ -15,6 +16,7 @@ CADENT.App = Backbone.Router.extend({
         ""					: "home",
         "home"				: "home",
         "about"				: "home",
+        "contact"			: "contact",
         "projects"			: "projects",
         "detail/:id"		: "detail",
         "edit"				: "edit",
@@ -23,7 +25,8 @@ CADENT.App = Backbone.Router.extend({
     
     initialize : function () {
         this.headerView = new CADENT.HeaderView();
-        $('.header').html(this.headerView.el);
+        $('.content').append(this.headerView.el);
+        //$('.header').html(this.headerView.el);
         
         this.footerView = new CADENT.FooterView();
         $('.footer').html(this.footerView.el);
@@ -33,9 +36,18 @@ CADENT.App = Backbone.Router.extend({
         CADENT.projectList = new CADENT.ProjectCollection();
     },
     
+    toggleNavButton : function ( tgt ) {
+    	if(CADENT.activeButton) {
+    		CADENT.activeButton.removeClass('nav-inner-selected');
+    	}
+    	
+    	CADENT.activeButton = tgt;
+    	CADENT.activeButton.addClass('nav-inner-selected');
+    },
+    
     home : function () {
         console.log('ROUTER :: home');
-        
+        this.toggleNavButton($('#nav_about'));
         this.homeView = new CADENT.HomeView();
         $(".main-content").html(this.homeView.el);
         /*
@@ -67,11 +79,11 @@ CADENT.App = Backbone.Router.extend({
     
     projects : function () {
         console.log('ROUTER :: projects');
-        
-        this.projectListView = new CADENT.ProjectListView({model: CADENT.projectList});
-        $(".main-content").html(this.projectListView.el);
-        CADENT.projectListLoaded = true;
-		 /*          
+        this.toggleNavButton($('#nav_projects'));
+        //this.projectListView = new CADENT.ProjectListView({model: CADENT.projectList});
+        //$(".main-content").html(this.projectListView.el);
+        //CADENT.projectListLoaded = true;
+		           
         if(this.homeListView)
         {
         	$(".main-content").append(this.homeListView.el);
@@ -87,7 +99,13 @@ CADENT.App = Backbone.Router.extend({
 				$(".main-content").append(this.homeListView.el);
 			}
 		}
-		*/
+    },
+    
+    contact : function () {
+        console.log('ROUTER :: contact');
+        this.toggleNavButton($('#nav_contact'));
+        this.contactView = new CADENT.ContactView();
+        $(".main-content").html(this.contactView.el);
     },
     
     

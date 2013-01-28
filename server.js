@@ -2,7 +2,8 @@ var express = require('express'),
     path = require('path'),
     http = require('http'),
     project = require('./routes/projects'),
-    tag = require('./routes/tags');
+    tag = require('./routes/tags'),
+    utils = require('./routes/utils');
 
 var app = express();
 
@@ -19,6 +20,8 @@ app.post('/projects', project.addProject);
 app.get('/tags', tag.findAll);
 app.post('/tags', tag.addTag);
 app.delete('/tags/:id', tag.deleteTag);
+
+app.post('/sendMail', utils.sendMail);
 
 console.log("Server hit - " + app.get('port'));
 http.createServer(app).listen(app.get('port'), function () {

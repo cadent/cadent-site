@@ -49,8 +49,14 @@
 
 .headerMain {
   font-family: 'Antic Slab' !important;
-  //font-family: 'Coustard' !important;
-  //font-family: 'Sorts Mill Goudy' !important;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.headerHandwriting {
+  //font-family: 'Great Vibes' !important;
+  font-family: 'Arizonia' !important;
+  
   font-style: normal;
   font-weight: 400;
 }
@@ -122,7 +128,6 @@ html, body {
     .txtNormal;
     color: @darkGrey;
     background: url(../img/texture.png) no-repeat top center,url(../img/background.jpg) repeat;
-    
 }
 
 
@@ -186,7 +191,7 @@ input[type=text], input[type=url] {
 // ----------------------------------------------------
 
 .header {
-  height: 60px;
+  height: 50px;
   border-bottom: 1px solid #fff;
   background-color: rgba(224, 224, 224, 0.95);
   -webkit-box-shadow: 0 1px 0 @mediumGrey;
@@ -195,17 +200,27 @@ input[type=text], input[type=url] {
   right: 0;
   left: 0;
   z-index: 1030;
-  margin-bottom: 0;
+  margin-top: 0px;
+  padding: 0px;
 }
 
 .nav-inner {
   width: @defaultWidth;
-  margin: auto;
-  padding-top: 5px;
+  margin: 0 auto;
+  //margin-top: 0px;
+  //padding-top: 20px;
   //padding-right: 75px;
   
+  .nav-inner-selected {
+    color:@deepRed !important;
+    border-top: 8px solid @deepRed;
+    padding-top: 4px !important;
+  }
+  
   .img-logo {
+    padding-top:10px;
     padding-right: 10px;
+    cursor: pointer;
   }
 }
 
@@ -214,9 +229,11 @@ input[type=text], input[type=url] {
   float:right;
   cursor: pointer;
   color:@darkGrey;
-  padding-left: 30px;
+  margin-left: 30px;
+  padding-bottom: 5px;
   text-decoration:none;
   .headerMain;
+  padding-top: 12px;
 }
 
 .nav-item:hover {
@@ -230,7 +247,7 @@ input[type=text], input[type=url] {
 }
 
 .top-shim {
-  height: 70px;
+  height: 60px;
 }
 
 
@@ -247,67 +264,156 @@ input[type=text], input[type=url] {
   //border-right: 1px dotted @mediumGrey;
 }
 
+// ----------------------------------------------------
+// HOME
+// ----------------------------------------------------
+
+#b_view_projects {
+  margin-top: -45px;
+  float: right;
+}
+
+.top-intro {
+  line-height: 30px;
+  width: @defaultWidth;
+  text-align: justify;
+  margin-bottom: 60px;
+}
+
+.spacer {
+  .headerHandwriting;
+  color: @headerGrey;
+  //color: rgb(100, 100, 100);
+  //text-shadow: 1px 1px 1px @mediumGrey;
+  text-shadow: 1px 1px 1px #fff;
+  font-size:44px;
+  padding: 30px 0px 8px 10px;
+  //padding-top: 30px;
+  //padding-bottom: 10px;
+  border-bottom: 1px solid @mediumDarkGrey;
+  margin-bottom: 30px;
+  -webkit-box-shadow: 0 1px 0 #fff;
+}
+
+
+// ----------------------------------------------------
+// FOOTER
+// ----------------------------------------------------
+
+
 .footer-inner-services {
   border-top: 1px solid rgba(200, 200, 200, 1);
   background-color: @mediumGrey;
   
   .footer-services {
     width: @defaultWidth;
-    height: 400px;
+    height: 450px;
     margin: 0 auto;
     background-color: @mediumGrey;
     padding-top: 15px;
     
     .services-column {
-      padding: 5px;
+      padding-right: 5px;
+      margin-bottom: 40px;
       
-      .services-header {
-        .headerMain;
-        font-size: 16px;
+      ul {
+        list-style: none;
+        margin: 0;
+        font-size: 12px;
         text-shadow: 1px 1px 1px #fff;
-      }
-      
-      .services-header-bottom {
-        padding: 5px 0px;
-        border-bottom: 1px solid @mediumDarkGrey;
-        -webkit-box-shadow: 0 1px 0 @lightGrey;
+        
+        li {
+          line-height:26px;
+        }
       }
     }
   }
 }
 
+.services-header {
+  .headerMain;
+  color: @darkGrey;
+  font-size: 18px;
+  text-shadow: 1px 1px 1px #fff;
+}
+
+.services-header-bottom {
+  padding-top: 5px;
+  //padding-bottom: 12px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid @mediumDarkGrey;
+  -webkit-box-shadow: 0 1px 0 @lightGrey;
+}
+
+.services-tech-list {
+  padding: 10px 0px;
+}
+
+.services-tag-view {
+  padding: 2px 12px;
+  margin: 0 auto;
+  float: left;
+  margin-right: 6px;
+  margin-bottom: 10px;
+  border: 1px solid rgb(187, 187, 187);
+  -webkit-box-shadow: 0 1px 0 #fff;
+  //font-size: 14px;
+  text-shadow: 0px 1px 1px #fff;
+  //background-color: rgb(204, 204, 204);
+  color: @darkGrey;
+  
+  //border: 1px solid @mediumDarkGrey;
+  //-webkit-box-shadow: 0 1px 0 @lightGrey;
+  font-size: 12px;
+ // text-shadow: 1px 1px 1px #fff;
+  .border-radius(10px);
+  .txtSemi;
+}
+
+.services-tag-lang {
+  background-color: rgb(204, 204, 204);
+  
+}
+
+.services-tag-tech {
+  background-color: rgb(230, 230, 230);
+}
+
 .footer-inner-details {
-  border-top: 1px solid @lightGrey;
-  background-color: @darkGrey;
+  border-top: 1px solid @mediumDarkGrey;
+  //background-color: @darkGrey;
   
   .footer-details {
     width: @defaultWidth;
     height: 150px;
     margin: 0 auto;
-    background-color: @darkGrey;
+    padding-top: 10px;
+    //background-color: @darkGrey;
+    
+    .footer-contact {
+      text-align: center;
+      font-size: 12px;
+      padding-bottom: 10px;
+      margin-bottom: 10px;
+      border-bottom: 1px solid @mediumDarkGrey;
+      -webkit-box-shadow: 0 1px 0 @lightGrey;
+    }
+    
+    .footer-colophon {
+      text-align: center;
+      font-size: 14px;
+      .headerMain;
+      color: #000;
+      //padding-bottom: 10px;
+     // margin-bottom: 10px;
+      //border-bottom: 1px solid @mediumDarkGrey;
+      //-webkit-box-shadow: 0 1px 0 @lightGrey;
+    }
   }
 }
 
 
-.top-intro {
-  line-height: 30px;
-  width: @defaultWidth;
-  text-align: justify;
-  margin-bottom: 40px;
-}
 
-.spacer {
-  .headerMain;
-  color: @headerGrey;
-  //text-shadow: 1px 1px 1px @mediumGrey;
-  text-shadow: 1px 1px 1px #fff;
-  font-size:33px;
-  padding-top: 30px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid @mediumDarkGrey;
-  margin-bottom: 15px;
-  -webkit-box-shadow: 0 1px 0 #fff;
-}
 
 // ----------------------------------------------------
 // PROJECTS
@@ -334,10 +440,15 @@ input[type=text], input[type=url] {
   }
   
   .project-subtitle {
-    color: @deepOrange;
+    color: @deepRed;
   }
   
   
+}
+
+#b_view_github {
+  margin-top: -45px;
+  float: right;
 }
 
 .project-baseline {
@@ -440,8 +551,6 @@ input[type=text], input[type=url] {
 
 .details-button {
   padding: 3px 12px;
-  margin-top: -15px;
-  float: right;
   border: 1px solid rgb(187, 187, 187);
   -webkit-box-shadow: 0 2px 0 #fff;
   font-size: 14px;
@@ -452,6 +561,11 @@ input[type=text], input[type=url] {
   .border-radius(2px);
   .txtSemi;
   .transition;
+}
+
+#b_details {
+  margin-top: -15px;
+  float: right;
 }
 
 .details-button:hover {
