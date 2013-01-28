@@ -12,18 +12,30 @@ CADENT.ProjectListView = Backbone.View.extend({
 	},
 
 	render: function () {
-		var projects = this.model.models;
-        //var len = 10;
-		var len = projects.length;
-		//'<div id="about-cadent" class="spacer">projects</div>'
+		
+// TESTING CODE - START
+/*
+		var len = 10;
 		$(this.el).html('<div id="about-cadent" class="spacer">Recent Projects</div><div id="b_view_github" class="details-button"><span>+ View this Site on GitHub</span></div><div class="project-thumbnails"></div>');
 
+        for (var i = 0; i < len; i++) {
+            $('.project-thumbnails', this.el).append(new CADENT.ProjectListItemView({model: new CADENT.Project()}).render().el);
+        }
+*/
+// TESTING CODE - END
+
+// LIVE CODE - START
+        
+		var projects = this.model.models;
+		var len = projects.length;
+		
+		$(this.el).html('<div id="about-cadent" class="spacer">Recent Projects</div><div id="b_view_github" class="details-button"><span>+ View this Site on GitHub</span></div><div class="project-thumbnails"></div>');
 		
         for (var i = 0; i < len; i++) {
-            //$('.project-thumbnails', this.el).append(new CADENT.ProjectListItemView({model: new CADENT.Project()}).render().el);
             $('.project-thumbnails', this.el).append(new CADENT.ProjectListItemView({model: projects[i]}).render().el);
         }
 
+// LIVE CODE - END
         return this;
    },
     
@@ -93,10 +105,6 @@ CADENT.ProjectImgThumbView = Backbone.View.extend({
     		f(this);
     		$(this.el).removeClass('thumb-deselected');
     	}
-    	
-		$('html, body').animate({
-			scrollTop: $(this.el).offset().top
-		}, 2000);
     },
     
     deselectImg: function() {
@@ -177,12 +185,17 @@ CADENT.ProjectListItemView = Backbone.View.extend({
     	
     	var p_img = $(this.el).children('.project-hero-img');
     	p_img.removeClass('project-hero-img-collapsed').addClass('project-hero-img-expanded');
-    	p_img.children('.project-thumbnail-list').fadeIn('slow');
+    	//p_img.children('.project-thumbnail-list').fadeIn('slow');
     	var heroImg = p_img.children('.hero-img');
     	heroImg.removeClass('greyscale-img');
-    	//p_img.children('.project-thumbnail-list').fadeIn('slow', function() {
-    	//		if(last_project) last_project.collapseView();
-    	//	});
+    	p_img.children('.project-thumbnail-list').fadeIn('slow', function() {
+    			var targetOffset = CADENT.activeProject.$el.offset().top - 65;
+		    	console.log('el: ' + CADENT.activeProject.$el.offset().top + ', targetOffset: ' + targetOffset);
+				$('html, body').animate({
+					scrollTop: targetOffset
+				}, 1000);
+    			//if(last_project) last_project.collapseView();
+    	});
     	
     	$(this.el).children('.project-desc').removeClass('project-desc-minimized').addClass('project-desc-expanded');
     	//this.$b_details.removeClass('details-button');
@@ -192,6 +205,8 @@ CADENT.ProjectListItemView = Backbone.View.extend({
     	console.log('B: ' + $('#b_details').text());
     	
     	//$(this.el).find('details-button').val('- Less');
+    	
+    	
     },
     
     collapseView: function() {

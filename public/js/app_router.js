@@ -26,12 +26,10 @@ CADENT.App = Backbone.Router.extend({
     initialize : function () {
         this.headerView = new CADENT.HeaderView();
         $('.content').append(this.headerView.el);
-        //$('.header').html(this.headerView.el);
         
         this.footerView = new CADENT.FooterView();
         $('.footer').html(this.footerView.el);
         
-        // Adding to the CADENT namespace instead of CADENT.App because I think it is ultimately cleaner.
         CADENT.projectListLoaded = false;
         CADENT.projectList = new CADENT.ProjectCollection();
     },
@@ -48,47 +46,48 @@ CADENT.App = Backbone.Router.extend({
     home : function () {
         console.log('ROUTER :: home');
         this.toggleNavButton($('#nav_about'));
+        
         this.homeView = new CADENT.HomeView();
         $(".main-content").html(this.homeView.el);
-        /*
-        this.homeListView = new CADENT.ProjectListView({model: CADENT.projectList});
-        $(".main-content").append(this.homeListView.el);
-        CADENT.projectListLoaded = true;
-        */
-       
+
+// LIVE CODE - START
+
         if(!CADENT.projectListLoaded){
 			CADENT.projectList.fetch({success: function(){
 	            CADENT.projectListLoaded = true;
 	        }});
 		}
+
+// LIVE CODE - END
     },
     
     projects : function () {
         console.log('ROUTER :: projects - loaded = ' + CADENT.projectListLoaded);
         this.toggleNavButton($('#nav_projects'));
-        //this.projectListView = new CADENT.ProjectListView({model: CADENT.projectList});
-        //$(".main-content").html(this.projectListView.el);
-        //CADENT.projectListLoaded = true;
-		           
-        if(CADENT.homeListView)
-        {
-        	CADENT.homeListView = new CADENT.ProjectListView({model: CADENT.projectList});
-        	$(".main-content").html(CADENT.homeListView.el);
-        } else {
-			if(!CADENT.projectListLoaded){
-				CADENT.projectList.fetch({success: function(){
-	            
-		            CADENT.homeListView = new CADENT.ProjectListView({model: CADENT.projectList});
-		            $(".main-content").html(CADENT.homeListView.el);
-		            CADENT.projectListLoaded = true;
-		        }});
-			} else {
-				//if(!CADENT.homeListView) {
-					CADENT.homeListView = new CADENT.ProjectListView({model: CADENT.projectList});
-				//}
-				$(".main-content").html(CADENT.homeListView.el);
-			}
+        
+// TESTING CODE - START
+/*
+        this.projectListView = new CADENT.ProjectListView({model: CADENT.projectList});
+        $(".main-content").html(this.projectListView.el);
+        CADENT.projectListLoaded = true;
+*/       
+// TESTING CODE - END
+        
+// LIVE CODE - START
+         
+		if(!CADENT.projectListLoaded) {
+			CADENT.homeListView = new CADENT.ProjectListView({model: CADENT.projectList});
+			$(".main-content").html(CADENT.homeListView.el);
+		} else {
+			CADENT.projectList.fetch({success: function(){
+	            CADENT.homeListView = new CADENT.ProjectListView({model: CADENT.projectList});
+	            $(".main-content").html(CADENT.homeListView.el);
+	            CADENT.projectListLoaded = true;
+	        }});
 		}
+
+// LIVE CODE - END
+
     },
     
     contact : function () {
