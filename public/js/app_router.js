@@ -72,6 +72,7 @@ CADENT.App = Backbone.Router.extend({
 		           
         if(CADENT.homeListView)
         {
+        	CADENT.homeListView = new CADENT.ProjectListView({model: CADENT.projectList});
         	$(".main-content").html(CADENT.homeListView.el);
         } else {
 			if(!CADENT.projectListLoaded){
