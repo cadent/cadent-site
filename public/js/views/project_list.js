@@ -13,15 +13,15 @@ CADENT.ProjectListView = Backbone.View.extend({
 
 	render: function () {
 		var projects = this.model.models;
-        var len = 10;
-		//var len = projects.length;
+        //var len = 10;
+		var len = projects.length;
 		//'<div id="about-cadent" class="spacer">projects</div>'
 		$(this.el).html('<div id="about-cadent" class="spacer">Recent Projects</div><div id="b_view_github" class="details-button"><span>+ View this Site on GitHub</span></div><div class="project-thumbnails"></div>');
 
 		
         for (var i = 0; i < len; i++) {
-            $('.project-thumbnails', this.el).append(new CADENT.ProjectListItemView({model: new CADENT.Project()}).render().el);
-            //$('.thumbnails', this.el).append(new CADENT.ProjectListItemView({model: projects[i]}).render().el);
+            //$('.project-thumbnails', this.el).append(new CADENT.ProjectListItemView({model: new CADENT.Project()}).render().el);
+            $('.project-thumbnails', this.el).append(new CADENT.ProjectListItemView({model: projects[i]}).render().el);
         }
 
         return this;
