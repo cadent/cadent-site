@@ -78,7 +78,7 @@ CADENT.App = Backbone.Router.extend({
     },
     
     projects : function () {
-        console.log('ROUTER :: projects');
+        console.log('ROUTER :: projects - loaded = ' + CADENT.projectListLoaded);
         this.toggleNavButton($('#nav_projects'));
         //this.projectListView = new CADENT.ProjectListView({model: CADENT.projectList});
         //$(".main-content").html(this.projectListView.el);
@@ -91,7 +91,7 @@ CADENT.App = Backbone.Router.extend({
 			if(!CADENT.projectListLoaded){
 				CADENT.projectList.fetch({success: function(){
 	            
-		            this.homeListView = new CADENT.ProjectListView({model: CADENT.projectList,});
+		            this.homeListView = new CADENT.ProjectListView({model: CADENT.projectList});
 		            $(".main-content").append(this.homeListView.el);
 		            CADENT.projectListLoaded = true;
 		        }});
