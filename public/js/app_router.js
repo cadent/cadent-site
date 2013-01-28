@@ -58,23 +58,22 @@ CADENT.App = Backbone.Router.extend({
        
        
        
-		 /*          
-        if(this.homeListView)
+		          
+        if(CADENT.homeListView)
         {
-        	$(".main-content").append(this.homeListView.el);
+        	$(".main-content").append(CADENT.homeListView.el);
         } else {
 			if(!CADENT.projectListLoaded){
 				CADENT.projectList.fetch({success: function(){
 	            
-		            this.homeListView = new CADENT.ProjectListView({model: CADENT.projectList,});
-		            $(".main-content").append(this.homeListView.el);
+		            CADENT.homeListView = new CADENT.ProjectListView({model: CADENT.projectList,});
+		            $(".main-content").append(CADENT.homeListView.el);
 		            CADENT.projectListLoaded = true;
 		        }});
 			} else {
-				$(".main-content").append(this.homeListView.el);
+				$(".main-content").append(CADENT.homeListView.el);
 			}
 		}
-		*/
     },
     
     projects : function () {
@@ -84,19 +83,19 @@ CADENT.App = Backbone.Router.extend({
         //$(".main-content").html(this.projectListView.el);
         //CADENT.projectListLoaded = true;
 		           
-        if(this.homeListView)
+        if(CADENT.homeListView)
         {
-        	$(".main-content").append(this.homeListView.el);
+        	$(".main-content").append(CADENT.homeListView.el);
         } else {
 			if(!CADENT.projectListLoaded){
 				CADENT.projectList.fetch({success: function(){
 	            
-		            this.homeListView = new CADENT.ProjectListView({model: CADENT.projectList});
-		            $(".main-content").append(this.homeListView.el);
+		            CADENT.homeListView = new CADENT.ProjectListView({model: CADENT.projectList});
+		            $(".main-content").append(CADENT.homeListView.el);
 		            CADENT.projectListLoaded = true;
 		        }});
 			} else {
-				$(".main-content").append(this.homeListView.el);
+				$(".main-content").append(CADENT.homeListView.el);
 			}
 		}
     },
