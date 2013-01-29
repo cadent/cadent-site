@@ -52,6 +52,7 @@ CADENT.ProjectListView = Backbone.View.extend({
 		    console.log('Looking for ' + pid + ', found ' + CADENT.listItemViews[i].getPid());
 		    if(CADENT.listItemViews[i].getPid() == pid) {
 		    	item = CADENT.listItemViews[i];
+		    	break;
 		    }
 		}
 		
@@ -226,6 +227,7 @@ CADENT.ProjectListItemView = Backbone.View.extend({
     expandView: function() {
     	var last_project = null;
     	var v = CADENT.homeListView.getListItemView(this.model.get('pid'));
+    	CADENT.app.navigate('projects/' + this.model.get('pid'), false);
     	console.log('found v: ' + v);
     	
     	if(CADENT.activeProject) {
