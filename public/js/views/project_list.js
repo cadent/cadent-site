@@ -221,7 +221,7 @@ CADENT.ProjectListItemView = Backbone.View.extend({
     			var targetOffset = CADENT.activeProject.$el.offset().top - 65;
 				$('html, body').animate({
 					scrollTop: targetOffset
-				}, 1000);
+				}, 700);
     	});
     	
     	$(this.el).children('.project-desc').removeClass('project-desc-minimized').addClass('project-desc-expanded');
