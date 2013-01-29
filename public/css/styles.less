@@ -7,16 +7,10 @@
  */
 
 @deepRed: #a93a03;
-@deepOrange: #e67b10;
-@deepBrown: #763c08;
-@txtLight: #fff;
-
 @darkGrey: #474747;
 @mediumDarkGrey: #cecece;
 @mediumGrey: #e0e0e0;
 @lightGrey: #F9F9F9;
-@lightestGrey: #fcfcfc;
-
 @headerGrey: #2f2f2f;
 
 @defaultWidth: 670px;
@@ -31,89 +25,73 @@
 
 .txtNormal {
   font-family: 'Open Sans' !important;
-  font-style: normal;
   font-weight: 400;
+   font-style: normal;
 }
 
 .txtItalic {
   font-family: 'Open Sans' !important;
-  font-style: italic;
   font-weight: 400;
+   font-style: italic;
 }
 
 .txtSemi {
   font-family: 'Open Sans' !important;
-  font-style: bold;
   font-weight: 600;
+   font-style: bold;
 }
 
 .headerMain {
   font-family: 'Antic Slab' !important;
-  font-style: normal;
   font-weight: 400;
+   font-style: normal;
 }
 
 .headerHandwriting {
-  //font-family: 'Great Vibes' !important;
   font-family: 'Arizonia' !important;
-  
-  font-style: normal;
   font-weight: 400;
+   font-style: normal;
 }
 
-.transition {
-  -webkit-transition: all 0.30s ease-in-out;
-  -moz-transition: all 0.30s ease-in-out;
-  -ms-transition: all 0.30s ease-in-out;
-  -o-transition: all 0.30s ease-in-out;
+.transition(@speed: 0.30s) {
+  -webkit-transition: all @speed ease-in-out;
+     -moz-transition: all @speed ease-in-out;
+      -ms-transition: all @speed ease-in-out;
+       -o-transition: all @speed ease-in-out;
 }
+
+.box-shadow-default( @color: #fff ) {
+  -webkit-box-shadow: 0px 1px 0px 0px #fff;
+          box-shadow: 0px 1px 0px 0px #fff;
+}
+
+.border-radius (@radius: 5px) {
+  -webkit-border-radius: @radius;
+     -moz-border-radius: @radius;
+          border-radius: @radius;
+}
+
+
 
 .border-bottom-grey {
   border-bottom: 1px solid @mediumDarkGrey;
-  -webkit-box-shadow: 0 1px 0 #fff;
+  .box-shadow-default;
 }
 
 .border-bottom-grey-dashed {
   border-bottom: 1px dashed @mediumDarkGrey;
-  -webkit-box-shadow: 0 1px 0 #fff;
-}
-
-.border-top-grey-dotted {
-  border-top: 1px dotted @mediumDarkGrey;
-  -webkit-box-shadow: 0 -1px 0 #fff;
+  .box-shadow-default;
 }
 
 .border-bottom-grey-dotted {
   border-bottom: 1px dotted @mediumDarkGrey;
-  -webkit-box-shadow: 0 1px 0 #fff;
+  .box-shadow-default;
 }
 
-.border-radius (@radius: 5px) {
-  border-radius: @radius;
-  -moz-border-radius: @radius;
-  -webkit-border-radius: @radius;
-}
-/*
 .greyscale-img {
-  filter: url(filters.svg#grayscale);
-  filter: gray;
-  -webkit-filter: grayscale(1);
-}
-*/
-.greyscale-img {
-    filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale"); /* Firefox 10+, Firefox on Android */
-    filter: gray; /* IE6-9 */
-    -webkit-filter: grayscale(100%); /* Chrome 19+, Safari 6+, Safari 6+ iOS */
-}
-
-.solid-baseline {
-  height:10px;
-  .border-bottom-grey;
-}
-
-.dotted-baseline {
-  height:10px;
-  .border-bottom-grey-dotted
+    -webkit-filter: grayscale(100%);
+            filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
+            filter: gray;
 }
 
 /*
@@ -126,61 +104,22 @@
 
 html, body {
     .txtNormal;
-    color: @darkGrey;
     text-shadow: 1px 1px 1px #fff;
-    background: url(../img/background.jpg) repeat;
-    //background: url(../img/texture.png) no-repeat top center,url(../img/background.jpg) repeat;
+     background: url(../img/background.jpg) repeat;
+          color: @darkGrey;
 }
-
-
-/*
-html, body{
-    margin:0;
-    padding:0;
-    background-color: rgba(255, 255, 255, 0.46);
-    min-width:100%;
-    min-height:100%;
-    height:auto;
-    width:auto;
-    .txtNormal;
-    font-size: 18px;
-    c
-    background-image:url('../img/bg-stripes-brown.png');
-    
-}
-*/
 
 a {
-  color: @deepRed;
   text-decoration: none;
+            color: @deepRed;
 }
 
 a:hover {
-  color: @deepRed;
   .border-bottom-grey-dotted;
   text-decoration: none;
+            color: @deepRed;
 }
 
-//:required {
-//  border-color: @deepRed;
- /* -webkit-box-shadow: 0 0 5px rgba(0, 0, 255, .5);
-  -moz-box-shadow: 0 0 5px rgba(0, 0, 255, .5);
-  -o-box-shadow: 0 0 5px rgba(0, 0, 255, .5);
-  -ms-box-shadow: 0 0 5px rgba(0, 0, 255, .5);
-  box-shadow: 0 0 5px rgba(0, 0, 255, .5);*/
-//}
-/*
-input[type=text], input[type=url] {
-    font-size:16px; 
-    margin-bottom:15px;        
-    width: 300px;
-    height: 30px;
-    padding: 5px 10px 5px 10px;
-    .transition;
-    outline: none;
-    border: 1px solid #DDDDDD;
-}
-*/
 /*
  * ----------------------------------------------------
  * 
@@ -194,17 +133,17 @@ input[type=text], input[type=url] {
 // ----------------------------------------------------
 
 .header {
-  height: 50px;
-  border-bottom: 1px solid #fff;
+  .box-shadow-default(@mediumGrey);
   background-color: rgba(224, 224, 224, 0.95);
-  -webkit-box-shadow: 0 1px 0 @mediumGrey;
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  z-index: 1030;
-  margin-top: 0px;
-  padding: 0px;
+     border-bottom: 1px solid #fff;
+        margin-top: 0px;
+           padding: 0px;
+            height: 50px;
+          position: fixed;
+               top: 0;
+             right: 0;
+              left: 0;
+           z-index: 1030;
 }
 
 .nav-inner {
@@ -283,13 +222,9 @@ input[type=text], input[type=url] {
 .spacer {
   .headerHandwriting;
   color: @headerGrey;
-  //color: rgb(100, 100, 100);
-  //text-shadow: 1px 1px 1px @mediumGrey;
   text-shadow: 1px 1px 1px #fff;
   font-size:44px;
   padding: 30px 0px 8px 10px;
-  //padding-top: 30px;
-  //padding-bottom: 10px;
   border-bottom: 1px solid @mediumDarkGrey;
   margin-bottom: 30px;
   -webkit-box-shadow: 0 1px 0 #fff;
@@ -614,25 +549,5 @@ input[type=text], input[type=url] {
 .tag-role {
   background-color: rgb(245, 245, 245);
   border: 1px solid rgb(211, 211, 211);
-}
-
-
-// ----------------------------------------------------
-// FILTERS
-// ----------------------------------------------------
-
-#filters-pane {
-  width: @defaultWidth;
-  background-color: @deepBrown;
-}
-
-.filters-hidden {
-  display: none;
-  height: 5px;
-}
-
-.filters-expanded {
-  display: block;
-  height: 100px;
 }
   
