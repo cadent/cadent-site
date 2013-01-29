@@ -63,8 +63,11 @@ CADENT.App = Backbone.Router.extend({
     
     projects : function () {
         console.log('ROUTER :: projects - loaded = ' + CADENT.projectListLoaded);
-        this.toggleNavButton($('#nav_projects'));
-        
+        this.displayProjects();
+    },
+    
+    displayProjects: function () {
+    	this.toggleNavButton($('#nav_projects'));
 // TESTING CODE - START
 /*
         this.projectListView = new CADENT.ProjectListView({model: CADENT.projectList});
@@ -78,20 +81,33 @@ CADENT.App = Backbone.Router.extend({
 		if(CADENT.projectListLoaded) {
 			CADENT.homeListView = new CADENT.ProjectListView({model: CADENT.projectList});
 			$(".main-content").html(CADENT.homeListView.el);
+			
+			if(CADENT.direct_pid) {
+				CADENT.homeListView.showDetail(CADENT.direct_pid);
+				CADENT.direct_pid = null;
+			}
 		} else {
 			CADENT.projectList.fetch({success: function(){
 	            CADENT.homeListView = new CADENT.ProjectListView({model: CADENT.projectList});
 	            $(".main-content").html(CADENT.homeListView.el);
+	            
+	            if(CADENT.direct_pid) {
+					CADENT.homeListView.showDetail(CADENT.direct_pid);
+					CADENT.direct_pid = null;
+				}
+			
 	            CADENT.projectListLoaded = true;
 	        }});
 		}
 
 // LIVE CODE - END
-
+    	
     },
     
-    projectDetail : function ( project_id ) {
-    	console.log('PID: ' + project_id);
+    projectDetail : function ( pid ) {
+    	console.log('PID: ' + pid);
+    	CADENT.direct_pid = pid;
+    	this.displayProjects();
     },
     
     contact : function () {

@@ -58,6 +58,10 @@ CADENT.ProjectListView = Backbone.View.extend({
 		
 		return item;
 	},
+	
+	showDetail: function ( pid ) {
+		this.getListItemView(pid).expandView();
+	},
     
     visitGithub : function () {
     	window.open('https://github.com/cadent/cadent-site', '_blank');
@@ -216,6 +220,7 @@ CADENT.ProjectListItemView = Backbone.View.extend({
 			if(CADENT.activeProject == this) {
 				this.collapseView();
 				CADENT.activeProject = null;
+				CADENT.app.navigate('projects', false);
 			} else {
 				this.expandView();
 			}
