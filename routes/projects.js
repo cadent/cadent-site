@@ -32,7 +32,7 @@ function handleError( error )
 exports.findAll = function(req, res) {
 	console.log('projects/findAll: ');
     database.collection('projects', function(err, collection) {
-        collection.find().toArray(function(err, items) {
+        collection.find({"sort": "order"}).toArray(function(err, items) {
             res.send(items);
         });
     });
