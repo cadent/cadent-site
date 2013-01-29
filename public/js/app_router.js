@@ -17,7 +17,8 @@ CADENT.App = Backbone.Router.extend({
         "home"				: "home",
         "about"				: "home",
         "contact"			: "contact",
-        "projects"			: "projects"
+        "projects"			: "projects",
+        "projects/:pid"		: "projectDetail"
     },
     
     initialize : function () {
@@ -87,6 +88,10 @@ CADENT.App = Backbone.Router.extend({
 
 // LIVE CODE - END
 
+    },
+    
+    projectDetail : function ( project_id ) {
+    	console.log('PID: ' + project_id);
     },
     
     contact : function () {
