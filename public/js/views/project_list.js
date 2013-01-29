@@ -43,7 +43,20 @@ CADENT.ProjectListView = Backbone.View.extend({
 
 // LIVE CODE - END
         return this;
-   },
+	},
+   
+	getListItemView: function ( pid ) {
+		var item = null;
+		
+		for (var i = 0; i < CADENT.listItemViews.length; i++) {
+		    console.log('Looking for ' + pid + ', found ' + CADENT.listItemViews[i].getPid());
+		    if(CADENT.listItemViews[i].getPid() == pid) {
+		    	item = CADENT.listItemViews[i];
+		    }
+		}
+		
+		return item;
+	},
     
     visitGithub : function () {
     	window.open('https://github.com/cadent/cadent-site', '_blank');
@@ -186,6 +199,10 @@ CADENT.ProjectListItemView = Backbone.View.extend({
         return this;
     },
     
+    getPid: function () {
+    	return this.model.get('pid');
+    },
+    
     selectImg: function( imgView ) {
     	if(this.selectedThumb){
     		this.selectedThumb.deselectImg();
@@ -208,6 +225,8 @@ CADENT.ProjectListItemView = Backbone.View.extend({
     
     expandView: function() {
     	var last_project = null;
+    	var v = CADENT.homeListView.getListItemView(this.model.get('pid'));
+    	console.log('found v: ' + v);
     	
     	if(CADENT.activeProject) {
     		//last_project = CADENT.activeProject;
