@@ -1,5 +1,6 @@
 CADENT = window.CADENT || {};
 CADENT.activeProject = null;
+CADENT.listItemViews = [];
 
 CADENT.ProjectListView = Backbone.View.extend({
 
@@ -28,11 +29,16 @@ CADENT.ProjectListView = Backbone.View.extend({
         
 		var projects = this.model.models;
 		var len = projects.length;
+		CADENT.listItemViews = [];
 		
 		$(this.el).html('<div id="about-cadent" class="spacer">Recent Projects</div><div id="b_view_github" class="details-button"><span>+ View this Site on GitHub</span></div><div class="project-thumbnails"></div>');
 		
         for (var i = 0; i < len; i++) {
-            $('.project-thumbnails', this.el).append(new CADENT.ProjectListItemView({model: projects[i]}).render().el);
+            var pliv = new CADENT.ProjectListItemView({model: projects[i]});
+            CADENT.listItemViews.push(pliv);
+            
+            $('.project-thumbnails', this.el).append(pliv.render().el);
+            console.log('CADENT.listItemViews: ' + CADENT.listItemViews);
         }
 
 // LIVE CODE - END
@@ -40,7 +46,6 @@ CADENT.ProjectListView = Backbone.View.extend({
    },
     
     visitGithub : function () {
-    	console.log('visit github');
     	window.open('https://github.com/cadent/cadent-site', '_blank');
     }
 });
