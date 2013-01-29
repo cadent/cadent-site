@@ -7,10 +7,10 @@
  */
 
 @deepRed: #a93a03;
-@darkGrey: #474747;
-@mediumDarkGrey: #cecece;
-@mediumGrey: #e0e0e0;
 @lightGrey: #F9F9F9;
+@mediumGrey: #e0e0e0;
+@mediumDarkGrey: #cecece;
+@darkGrey: #474747;
 @headerGrey: #2f2f2f;
 
 @defaultWidth: 670px;
@@ -53,7 +53,7 @@
    font-style: normal;
 }
 
-.transition(@speed: 0.30s) {
+.transition( @speed: 0.30s ) {
   -webkit-transition: all @speed ease-in-out;
      -moz-transition: all @speed ease-in-out;
       -ms-transition: all @speed ease-in-out;
@@ -61,16 +61,19 @@
 }
 
 .box-shadow-default( @color: #fff ) {
-  -webkit-box-shadow: 0px 1px 0px 0px #fff;
-          box-shadow: 0px 1px 0px 0px #fff;
+  -webkit-box-shadow: 0px 1px 0px 0px @color;
+          box-shadow: 0px 1px 0px 0px @color;
 }
 
-.border-radius (@radius: 5px) {
+.border-radius ( @radius: 5px ) {
   -webkit-border-radius: @radius;
      -moz-border-radius: @radius;
           border-radius: @radius;
 }
 
+.text-shadow-default( @x: 1px, @color: #fff ) {
+  text-shadow: @x 1px 1px @color;
+}
 
 
 .border-bottom-grey {
@@ -104,7 +107,7 @@
 
 html, body {
     .txtNormal;
-    text-shadow: 1px 1px 1px #fff;
+    .text-shadow-default;
      background: url(../img/background.jpg) repeat;
           color: @darkGrey;
 }
@@ -147,39 +150,37 @@ a:hover {
 }
 
 .nav-inner {
-  width: @defaultWidth;
+   width: @defaultWidth;
   margin: 0 auto;
   
   .nav-inner-selected {
-    color:@deepRed !important;
-    border-top: 8px solid @deepRed;
+          color: @deepRed !important;
+     border-top: 8px solid @deepRed;
     padding-top: 4px !important;
   }
   
   .img-logo {
-    padding-top:10px;
+      padding-top: 10px;
     padding-right: 10px;
-    cursor: pointer;
+           cursor: pointer;
   }
 }
 
 .nav-item {
-  font-size:20px;
-  float:right;
-  cursor: pointer;
-  color:@darkGrey;
-  margin-left: 30px;
-  padding-bottom: 5px;
-  padding-top: 12px;
-  text-decoration:none;
   .headerMain;
+  text-decoration: none;
+   padding-bottom: 5px;
+      padding-top: 12px;
+      margin-left: 30px;
+        font-size: 20px;
+           cursor: pointer;
+            float: right;
+            color: @darkGrey;
 }
 
 .nav-item:hover {
-  color:@deepRed;
+  color: @deepRed;
 }
-
-
 
 .project-list {
   width: 100%;
@@ -189,18 +190,13 @@ a:hover {
   height: 60px;
 }
 
-
-
 .container-narrow {
   max-width: @defaultWidth;
-  margin: 0 auto;
+     margin: 0 auto;
 }
 
-
-
 .content {
-  //border-left: 1px dotted @mediumGrey;
-  //border-right: 1px dotted @mediumGrey;
+  // ???
 }
 
 // ----------------------------------------------------
@@ -209,25 +205,25 @@ a:hover {
 
 #b_view_projects {
   margin-top: -45px;
-  float: right;
+       float: right;
 }
 
 .top-intro {
-  line-height: 36px;
-  width: @defaultWidth;
-  text-align: justify;
   margin-bottom: 60px;
+    line-height: 36px;
+     text-align: justify;
+          width: @defaultWidth;
 }
 
 .spacer {
   .headerHandwriting;
-  color: @headerGrey;
-  text-shadow: 1px 1px 1px #fff;
-  font-size:44px;
-  padding: 30px 0px 8px 10px;
+  .box-shadow-default;
+  .text-shadow-default;
   border-bottom: 1px solid @mediumDarkGrey;
   margin-bottom: 30px;
-  -webkit-box-shadow: 0 1px 0 #fff;
+      font-size: 44px;
+        padding: 30px 0px 8px 10px;
+          color: @headerGrey;
 }
 
 
@@ -237,28 +233,28 @@ a:hover {
 
 
 .footer-inner-services {
-  border-top: 1px solid rgba(200, 200, 200, 1);
   background-color: @mediumGrey;
+        border-top: 1px solid rgba(200, 200, 200, 1);
   
   .footer-services {
-    width: @defaultWidth;
-    height: 450px;
-    margin: 0 auto;
     background-color: @mediumGrey;
-    padding-top: 35px;
-    
+         padding-top: 35px;
+              margin: 0 auto;
+              height: 450px;
+               width: @defaultWidth;
+
     .services-column {
       padding-right: 5px;
       margin-bottom: 40px;
       
       ul {
+        .text-shadow-default;
         list-style: none;
-        margin: 0;
-        font-size: 12px;
-        text-shadow: 1px 1px 1px #fff;
+         font-size: 12px;
+            margin: 0;
         
         li {
-          line-height:26px;
+          line-height: 26px;
         }
       }
     }
@@ -267,16 +263,16 @@ a:hover {
 
 .services-header {
   .headerMain;
-  color: @darkGrey;
+  .text-shadow-default;
   font-size: 18px;
-  text-shadow: 1px 1px 1px #fff;
+      color: @darkGrey;
 }
 
 .services-header-bottom {
-  padding-top: 5px;
+  .box-shadow-default(@lightGrey);
   margin-bottom: 10px;
   border-bottom: 1px solid @mediumDarkGrey;
-  -webkit-box-shadow: 0 1px 0 @lightGrey;
+     padding-top: 5px;
 }
 
 .services-tech-list {
@@ -284,23 +280,22 @@ a:hover {
 }
 
 .services-tag-view {
-  padding: 2px 12px;
-  margin: 0 auto;
-  float: left;
-  margin-right: 6px;
-  margin-bottom: 10px;
-  border: 1px solid rgb(187, 187, 187);
-  -webkit-box-shadow: 0 1px 0 #fff;
-  text-shadow: 0px 1px 1px #fff;
-  color: @darkGrey;
-  font-size: 12px;
-  .border-radius(10px);
   .txtSemi;
+  .border-radius(10px);
+  .box-shadow-default;
+  .text-shadow-default(0px);
+  margin-bottom: 10px;
+   margin-right: 6px;
+      font-size: 12px;
+        padding: 2px 12px;
+         margin: 0 auto;
+         border: 1px solid rgb(187, 187, 187);
+          color: @darkGrey;
+          float: left;
 }
 
 .services-tag-lang {
   background-color: rgb(204, 204, 204);
-  
 }
 
 .services-tag-tech {
@@ -311,34 +306,30 @@ a:hover {
   border-top: 1px solid @mediumDarkGrey;
   
   .footer-details {
-    width: @defaultWidth;
-    height: 150px;
-    margin: 0 auto;
     padding-top: 10px;
+         height: 150px;
+         margin: 0 auto;
+          width: @defaultWidth;
     
     .footer-contact {
-      text-align: center;
-      font-size: 12px;
+      .box-shadow-default(@lightGrey);
       padding-bottom: 10px;
-      margin-bottom: 10px;
-      border-bottom: 1px solid @mediumDarkGrey;
-      -webkit-box-shadow: 0 1px 0 @lightGrey;
+       margin-bottom: 10px;
+       border-bottom: 1px solid @mediumDarkGrey;
+          text-align: center;
+           font-size: 12px;
     }
     
     .footer-colophon {
-      text-align: center;
-      font-size: 14px;
       .headerMain;
-      color: #000;
-      //padding-bottom: 10px;
-     // margin-bottom: 10px;
-      //border-bottom: 1px solid @mediumDarkGrey;
-      //-webkit-box-shadow: 0 1px 0 @lightGrey;
+      text-align: center;
+       font-size: 14px;
+           color: #000;
+
       .colophon-git {
-        margin-top: 18px;
-        font-size:20px;
         .headerHandwriting;
-        
+        margin-top: 18px;
+         font-size: 20px;
       }
     }
   }
@@ -352,19 +343,15 @@ a:hover {
 // ----------------------------------------------------
 
 .project-thumbnail {
-  width: @defaultWidth;
   margin: 30px 0px;
-  //border-bottom: 1px solid @mediumDarkGrey;
-  //.border-bottom-grey;
-  //-webkit-box-shadow: 0 1px 0 #fff;
-  //.transition;
+   width: @defaultWidth;
   
   .project-title {
     .headerMain;
-    font-size: 20px;
-    text-shadow: 1px 1px 1px #fff;
-    padding: 13px 0px 8px 0px;
+    .text-shadow-default;
     .border-bottom-grey-dashed;
+    font-size: 20px;
+      padding: 13px 0px 8px 0px;
   }
   
   .project-client {
@@ -374,28 +361,25 @@ a:hover {
   .project-subtitle {
     color: @deepRed;
   }
-  
-  
 }
 
 #b_view_github {
+       float: right;
   margin-top: -45px;
-  float: right;
 }
 
 .project-baseline {
-  padding: 0px 0px 30px 0px;
   text-align: center;
-  width: 100%;
+     padding: 0px 0px 30px 0px;
+       width: 100%;
 }
   
 .project-thumbnail-minimized {
-  //height: 480px;
-  //background-color: @lightGrey;
+  // ???
 }
 
 .project-thumbnail-expanded {
-  //height: 800px;
+  // ???
 }
 
 .project-details {
@@ -403,40 +387,35 @@ a:hover {
 }
 
 .project-hero-img {
-  width: @defaultWidth;
-  margin: 15px 0px 0px 0px;
-  background-color: @lightGrey;
-  //border: 1px solid @mediumGrey;
-  border: 1px solid rgb(204, 204, 204);
-  -webkit-box-shadow: 0 1px 0 #fff;
+  .box-shadow-default;
   .transition;
+  background-color: @lightGrey;
+            border: 1px solid rgb(204, 204, 204);
+            margin: 15px 0px 0px 0px;
+             width: @defaultWidth;
   
   .hero-img {
     margin: 10px;
     height: 350px;
     border: 1px solid @lightGrey;
-    //-webkit-box-shadow: 0 2px 0 #ccc;
   }
-  
-  
 }
 
 .project-thumbnail-list {
-  display: none;
   margin-left: 12px;
+      display: none;
   
   
   .project-thumb-img {
-    float: left;
     margin-right: 12px !important;
-    
-    border: 1px solid @mediumGrey;
-    
+          border: 1px solid @mediumGrey;
+           float: left;
+
     img {
-      cursor: pointer;
-      display: inline-block;
-      background: black;
-      padding: 0;
+      background: #000;
+         display: inline-block;
+         padding: 0;
+          cursor: pointer;
     }
   }
   
@@ -454,8 +433,9 @@ a:hover {
 }
 
 .project-hero-img-expanded {
-  height: 465px;
   background-color: @darkGrey;
+            height: 465px;
+  
   img {
     cursor: auto;
   }
@@ -466,13 +446,13 @@ a:hover {
 }
 
 .project-desc {
-  width: @defaultWidth;
-  margin-top: 25px;
-  line-height: 36px;
-  font-size: 20px;
-  text-align: justify;
-  text-shadow: 1px 1px 1px #fff;
   .transition;
+  .text-shadow-default;
+  line-height: 36px;
+   text-align: justify;
+   margin-top: 25px;
+    font-size: 20px;
+        width: @defaultWidth;
 }
 
 .project-desc-minimized {
@@ -484,28 +464,27 @@ a:hover {
 }
 
 .details-button {
-  padding: 3px 12px;
-  border: 1px solid rgb(187, 187, 187);
-  -webkit-box-shadow: 0 2px 0 #fff;
-  font-size: 14px;
-  text-shadow: 0px 1px 1px #fff;
-  //background-color: @deepRed;
-  background-color: rgb(204, 204, 204);
-  color: @darkGrey;
-  cursor: pointer;
+  .text-shadow-default(0px);
+  .box-shadow-default;
   .border-radius(2px);
-  .txtSemi;
   .transition;
+  .txtSemi;
+  background-color: rgb(204, 204, 204);
+         font-size: 14px;
+           padding: 3px 12px;
+            border: 1px solid rgb(187, 187, 187);
+            cursor: pointer;
+             color: @darkGrey;
 }
 
 #b_details {
   margin-top: -15px;
-  float: right;
+       float: right;
 }
 
 .details-button:hover {
   background-color: rgb(185, 185, 185);
-  border: 1px solid rgb(160, 160, 160);
+            border: 1px solid rgb(160, 160, 160);
 }
 
 
@@ -514,32 +493,27 @@ a:hover {
 // ----------------------------------------------------
 
 .tag-list {
-  //margin: 12px 0px;
   padding: 16px 0px 12px 0px;
-  height: 20px;
-  
-  //.border-bottom-grey-dashed;
+   height: 20px;
 }
 
 .tag-list-role {
-  //margin: 12px 0px;
-  //padding: 16px 0px 10px 0px;
-  height: 35px;
   .border-bottom-grey-dashed;
+  height: 35px;
 }
 
 .tag-view {
-  padding: 0px 8px;
-  margin: 0 auto;
-  float: left;
-  margin-right: 6px;
-  border: 1px solid rgb(187, 187, 187);
-  -webkit-box-shadow: 0 1px 0 #fff;
-  text-shadow: 0px 1px 1px #fff;
-  font-size: 10px;
-  color: @darkGrey;
-  .border-radius(10px);
   .txtSemi;
+  .box-shadow-default;
+  .border-radius(10px);
+  .text-shadow-default(0px);
+  margin-right: 6px;
+     font-size: 10px;
+       padding: 0px 8px;
+        margin: 0 auto;
+        border: 1px solid rgb(187, 187, 187);
+         color: @darkGrey;
+         float: left;
 }
 
 .tag-tech {
@@ -548,6 +522,6 @@ a:hover {
 
 .tag-role {
   background-color: rgb(245, 245, 245);
-  border: 1px solid rgb(211, 211, 211);
+            border: 1px solid rgb(211, 211, 211);
 }
   
