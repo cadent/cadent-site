@@ -54,8 +54,18 @@ CADENT.App = Backbone.Router.extend({
         this.toggleNavButton($('#nav_about'));
         
         this.homeView = new CADENT.HomeView();
-        $(".main-content").html(this.homeView.el);
-		this.scrollToTop();
+        
+        if($(".main-content").html()) {
+        	$(".main-content").fadeOut('fast', function() {
+	    		$(".main-content").html(this.homeView.el);
+	    		$(".main-content").fadeIn(200);
+	    		self.scrollToTop();
+	    	});
+        } else {
+        	$(".main-content").html(this.homeView.el);
+        	self.scrollToTop();
+        }
+
 // LIVE CODE - START
 ///*
         if(!CADENT.projectListLoaded){
@@ -91,7 +101,7 @@ CADENT.App = Backbone.Router.extend({
 		} else {
 			CADENT.projectList.fetch({success: function(){
 	            CADENT.projectListLoaded = true;
-	            this.displayProjectsAfterLoad();
+	            self.displayProjectsAfterLoad();
 	        }});
 		}
 //*/
@@ -117,6 +127,12 @@ CADENT.App = Backbone.Router.extend({
 	    	});
         } else {
         	$(".main-content").html(CADENT.projectListView.el);
+        	if(CADENT.direct_pid) {
+				CADENT.projectListView.showDetail(CADENT.direct_pid);
+				CADENT.direct_pid = null;
+			} else {
+				self.scrollToTop();
+			}
         }
     },
     
@@ -127,11 +143,20 @@ CADENT.App = Backbone.Router.extend({
     },
     
     contact : function () {
-        console.log('ROUTER :: contact');
+        var self = this;
         this.toggleNavButton($('#nav_contact'));
         this.contactView = new CADENT.ContactView();
-        $(".main-content").html(this.contactView.el);
-        this.scrollToTop();
+        
+        if($(".main-content").html()) {
+        	$(".main-content").fadeOut('fast', function() {
+	    		$(".main-content").html(this.contactView.el);
+	    		$(".main-content").fadeIn(200);
+	    		self.scrollToTop();
+	    	});
+        } else {
+        	$(".main-content").html(this.contactView.el);
+        	self.scrollToTop();
+        }
     },
     
     _trackPageview: function() {
