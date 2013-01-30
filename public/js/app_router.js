@@ -50,19 +50,19 @@ CADENT.App = Backbone.Router.extend({
     },
     
     home : function () {
-        console.log('ROUTER :: home');
+        var self = this;
         this.toggleNavButton($('#nav_about'));
         
         this.homeView = new CADENT.HomeView();
         
         if($(".main-content").html()) {
         	$(".main-content").fadeOut('fast', function() {
-	    		$(".main-content").html(this.homeView.el);
+	    		$(".main-content").html(self.homeView.el);
 	    		$(".main-content").fadeIn(200);
 	    		self.scrollToTop();
 	    	});
         } else {
-        	$(".main-content").html(this.homeView.el);
+        	$(".main-content").html(self.homeView.el);
         	self.scrollToTop();
         }
 
@@ -149,12 +149,12 @@ CADENT.App = Backbone.Router.extend({
         
         if($(".main-content").html()) {
         	$(".main-content").fadeOut('fast', function() {
-	    		$(".main-content").html(this.contactView.el);
+	    		$(".main-content").html(self.contactView.el);
 	    		$(".main-content").fadeIn(200);
 	    		self.scrollToTop();
 	    	});
         } else {
-        	$(".main-content").html(this.contactView.el);
+        	$(".main-content").html(self.contactView.el);
         	self.scrollToTop();
         }
     },
