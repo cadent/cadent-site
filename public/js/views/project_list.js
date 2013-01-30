@@ -15,18 +15,18 @@ CADENT.ProjectListView = Backbone.View.extend({
 	render: function () {
 		
 // TESTING CODE - START
-
+/*
 		var len = 10;
 		$(this.el).html('<div id="about-cadent" class="spacer">Recent Projects</div><div id="b_view_github" class="details-button"><span>+ View this Site on GitHub</span></div><div class="project-thumbnails"></div>');
 
         for (var i = 0; i < len; i++) {
             $('.project-thumbnails', this.el).append(new CADENT.ProjectListItemView({model: new CADENT.Project()}).render().el);
         }
-
+*/
 // TESTING CODE - END
 
 // LIVE CODE - START
- /*       
+       
 		var projects = this.model.models;
 		var len = projects.length;
 		CADENT.listItemViews = [];
@@ -40,7 +40,7 @@ CADENT.ProjectListView = Backbone.View.extend({
             $('.project-thumbnails', this.el).append(pliv.render().el);
             console.log('CADENT.listItemViews: ' + CADENT.listItemViews);
         }
-*/
+
 // LIVE CODE - END
         return this;
 	},
