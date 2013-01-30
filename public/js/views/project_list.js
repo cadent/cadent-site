@@ -15,18 +15,18 @@ CADENT.ProjectListView = Backbone.View.extend({
 	render: function () {
 		
 // TESTING CODE - START
-/*
+
 		var len = 10;
 		$(this.el).html('<div id="about-cadent" class="spacer">Recent Projects</div><div id="b_view_github" class="details-button"><span>+ View this Site on GitHub</span></div><div class="project-thumbnails"></div>');
 
         for (var i = 0; i < len; i++) {
             $('.project-thumbnails', this.el).append(new CADENT.ProjectListItemView({model: new CADENT.Project()}).render().el);
         }
-*/
+
 // TESTING CODE - END
 
 // LIVE CODE - START
-        
+ /*       
 		var projects = this.model.models;
 		var len = projects.length;
 		CADENT.listItemViews = [];
@@ -40,7 +40,7 @@ CADENT.ProjectListView = Backbone.View.extend({
             $('.project-thumbnails', this.el).append(pliv.render().el);
             console.log('CADENT.listItemViews: ' + CADENT.listItemViews);
         }
-
+*/
 // LIVE CODE - END
         return this;
 	},
@@ -146,7 +146,7 @@ CADENT.ProjectListItemView = Backbone.View.extend({
     selectedThumb: null,
 	
 	events: {
-		'click .project-hero-img > img'	: 'expandView',
+		'click .hero-img-wrapper'		: 'expandView',
 		'click .details-button'			: 'toggleView'
 	},
 	
@@ -159,17 +159,13 @@ CADENT.ProjectListItemView = Backbone.View.extend({
     render: function () {
         $(this.el).attr('id', this.model.get('pid'));
         $(this.el).html(this.template(this.model.toJSON()));
-        //console.log('imgs: ' + this.model.get('imgs'));
-        
-    	var p_img = $(this.el).children('.project-hero-img');
-        var img_list = p_img.children('.project-thumbnail-list');
-        var heroImg = p_img.children('.hero-img');
-        heroImg.addClass('greyscale-img');
-        //console.log('heroImg: ' + heroImg + ', ' + heroImg.attr('src'));
+
+        var heroImg = $('.hero-img', this.el);
+        $('.hero-img', this.el).addClass('greyscale-img');
         	
     	var images = this.model.get('imgs');
     	if(images) {
-    		heroImg.attr('src','img/projects/' + images[0]);
+    		$('.hero-img', this.el).attr('src','img/projects/' + images[0]);
     		var len = images.length;
         	var m;
         	
@@ -182,7 +178,7 @@ CADENT.ProjectListItemView = Backbone.View.extend({
 				
 				var v = new CADENT.ProjectImgThumbView({model:m});
 				if(i == 0) this.selectedThumb = v;
-				img_list.append(v.el);
+				$('.project-thumbnail-list', this.el).append(v.el);
 	        }
     	}
     	
@@ -231,9 +227,7 @@ CADENT.ProjectListItemView = Backbone.View.extend({
     
     expandView: function() {
     	var last_project = null;
-    	var v = CADENT.homeListView.getListItemView(this.model.get('pid'));
     	CADENT.app.navigate('projects/' + this.model.get('pid'), false);
-    	console.log('found v: ' + v);
     	
     	if(CADENT.activeProject) {
     		//last_project = CADENT.activeProject;
@@ -241,34 +235,28 @@ CADENT.ProjectListItemView = Backbone.View.extend({
     	}
     	
     	CADENT.activeProject = this;
+    	
     	$(this.el).removeClass('project-thumbnail-minimized').addClass('project-thumbnail-expanded');
+    	$('.project-hero-img', this.el).removeClass('project-hero-img-collapsed').addClass('project-hero-img-expanded');
+    	$('.project-desc', this.el).removeClass('project-desc-minimized').addClass('project-desc-expanded');
+    	$('.hero-img', this.el).removeClass('greyscale-img');
+    	$('#b_details', this.el).text('Hide Details');
     	
-    	var p_img = $(this.el).children('.project-hero-img');
-    	p_img.removeClass('project-hero-img-collapsed').addClass('project-hero-img-expanded');
-    	
-    	var heroImg = p_img.children('.hero-img');
-    	heroImg.removeClass('greyscale-img');
-    	p_img.children('.project-thumbnail-list').fadeIn('slow', function() {
+    	$('.project-thumbnail-list', this.el).fadeIn('slow', function() {
     			var targetOffset = CADENT.activeProject.$el.offset().top - 65;
 				$('html, body').animate({
 					scrollTop: targetOffset
 				}, 700);
     	});
-    	
-    	$(this.el).children('.project-desc').removeClass('project-desc-minimized').addClass('project-desc-expanded');
-    	$('#b_details', this.el).text('Hide Details');
     },
     
     collapseView: function() {
     	$(this.el).removeClass('project-thumbnail-expanded').addClass('project-thumbnail-minimized');
-    	//$(this.el).addClass('project-thumbnail-minimized');
     	
-    	var p_img = $(this.el).children('.project-hero-img');
-    	p_img.removeClass('project-hero-img-expanded').addClass('project-hero-img-collapsed');
-    	p_img.children('.project-thumbnail-list').fadeOut('fast');
-    	var heroImg = p_img.children('.hero-img');
-    	heroImg.addClass('greyscale-img');
-    	$(this.el).children('.project-desc').removeClass('project-desc-expanded').addClass('project-desc-minimized');
+    	$('.project-hero-img', this.el).removeClass('project-hero-img-expanded').addClass('project-hero-img-collapsed');
+    	$('.project-thumbnail-list', this.el).fadeOut('fast');
+    	$('.hero-img', this.el).addClass('greyscale-img');
+    	$('.project-desc', this.el).removeClass('project-desc-expanded').addClass('project-desc-minimized');
     	$('#b_details', this.el).text('+ Show Details');
     }
 
