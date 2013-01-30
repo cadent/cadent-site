@@ -38,7 +38,6 @@ CADENT.ProjectListView = Backbone.View.extend({
             CADENT.listItemViews.push(pliv);
             
             $('.project-thumbnails', this.el).append(pliv.render().el);
-            console.log('CADENT.listItemViews: ' + CADENT.listItemViews);
         }
 //*/
 // LIVE CODE - END
@@ -49,7 +48,6 @@ CADENT.ProjectListView = Backbone.View.extend({
 		var item = null;
 		
 		for (var i = 0; i < CADENT.listItemViews.length; i++) {
-		    console.log('Looking for ' + pid + ', found ' + CADENT.listItemViews[i].getPid());
 		    if(CADENT.listItemViews[i].getPid() == pid) {
 		    	item = CADENT.listItemViews[i];
 		    	break;
@@ -248,13 +246,13 @@ CADENT.ProjectListItemView = Backbone.View.extend({
     	$('.project-hero-img', this.el).removeClass('project-hero-img-collapsed').addClass('project-hero-img-expanded');
     	$('.project-desc', this.el).removeClass('project-desc-minimized').addClass('project-desc-expanded');
     	$('.hero-img', this.el).removeClass('greyscale-img');
-    	$('#b_details', this.el).text('Hide Details');
+    	$('#b_details', this.el).text('- Hide Details');
     	
     	if(this.model.get('url')) {
     		$('#b_view', this.el).css('display', 'block');
     	}
     	
-    	$('.project-thumbnail-list', this.el).fadeIn('slow', function() {
+    	$('.project-thumbnail-list', this.el).fadeIn(300, function() {
     			var targetOffset = CADENT.activeProject.$el.offset().top - 65;
 				$('html, body').animate({
 					scrollTop: targetOffset
