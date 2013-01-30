@@ -247,7 +247,11 @@ CADENT.ProjectListItemView = Backbone.View.extend({
     	$('.project-desc', this.el).removeClass('project-desc-minimized').addClass('project-desc-expanded');
     	$('.hero-img', this.el).removeClass('greyscale-img');
     	$('#b_details', this.el).text('Hide Details');
-    	$('#b_view', this.el).css('display', 'block');
+    	
+    	if(this.model.get('url')) {
+    		$('#b_view', this.el).css('display', 'block');
+    	}
+    	
     	$('.project-thumbnail-list', this.el).fadeIn('slow', function() {
     			var targetOffset = CADENT.activeProject.$el.offset().top - 65;
 				$('html, body').animate({

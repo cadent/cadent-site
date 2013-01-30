@@ -43,13 +43,19 @@ CADENT.App = Backbone.Router.extend({
     	CADENT.activeButton.addClass('nav-inner-selected');
     },
     
+    scrollToTop: function () {
+    	$('html, body').animate({
+			scrollTop: 0
+		}, 700);
+    },
+    
     home : function () {
         console.log('ROUTER :: home');
         this.toggleNavButton($('#nav_about'));
         
         this.homeView = new CADENT.HomeView();
         $(".main-content").html(this.homeView.el);
-
+		this.scrollToTop();
 // LIVE CODE - START
 ///*
         if(!CADENT.projectListLoaded){
@@ -73,6 +79,7 @@ CADENT.App = Backbone.Router.extend({
         this.projectListView = new CADENT.ProjectListView({model: CADENT.projectList});
         $(".main-content").html(this.projectListView.el);
         CADENT.projectListLoaded = true;
+        this.scrollToTop();
 */    
 // TESTING CODE - END
         
@@ -85,6 +92,8 @@ CADENT.App = Backbone.Router.extend({
 			if(CADENT.direct_pid) {
 				CADENT.homeListView.showDetail(CADENT.direct_pid);
 				CADENT.direct_pid = null;
+			} else {
+				this.scrollToTop();
 			}
 		} else {
 			CADENT.projectList.fetch({success: function(){
@@ -94,6 +103,8 @@ CADENT.App = Backbone.Router.extend({
 	            if(CADENT.direct_pid) {
 					CADENT.homeListView.showDetail(CADENT.direct_pid);
 					CADENT.direct_pid = null;
+				} else {
+					this.scrollToTop();
 				}
 			
 	            CADENT.projectListLoaded = true;
@@ -115,6 +126,7 @@ CADENT.App = Backbone.Router.extend({
         this.toggleNavButton($('#nav_contact'));
         this.contactView = new CADENT.ContactView();
         $(".main-content").html(this.contactView.el);
+        this.scrollToTop();
     },
     
     _trackPageview: function() {
