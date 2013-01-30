@@ -15,18 +15,18 @@ CADENT.ProjectListView = Backbone.View.extend({
 	render: function () {
 		
 // TESTING CODE - START
-/*
+///*
 		var len = 10;
 		$(this.el).html('<div id="about-cadent" class="spacer">Recent Projects</div><div id="b_view_github" class="details-button"><span>+ View this Site on GitHub</span></div><div class="project-thumbnails"></div>');
 
         for (var i = 0; i < len; i++) {
             $('.project-thumbnails', this.el).append(new CADENT.ProjectListItemView({model: new CADENT.Project()}).render().el);
         }
-*/
+//*/
 // TESTING CODE - END
 
 // LIVE CODE - START
-///*       
+/*       
 		var projects = this.model.models;
 		var len = projects.length;
 		CADENT.listItemViews = [];
@@ -40,7 +40,7 @@ CADENT.ProjectListView = Backbone.View.extend({
             $('.project-thumbnails', this.el).append(pliv.render().el);
             console.log('CADENT.listItemViews: ' + CADENT.listItemViews);
         }
-//*/
+*/
 // LIVE CODE - END
         return this;
 	},
@@ -179,6 +179,7 @@ CADENT.ProjectListItemView = Backbone.View.extend({
 				if(i == 0) this.selectedThumb = v;
 				$('.project-thumbnail-list', this.el).append(v.el);
 	        }
+	        
     	}
     	
     	var tech_tags = this.model.get('tech');
@@ -232,15 +233,16 @@ CADENT.ProjectListItemView = Backbone.View.extend({
     },
     
     expandView: function() {
-    	var last_project = null;
     	CADENT.app.navigate('projects/' + this.model.get('pid'), false);
     	
-    	if(CADENT.activeProject) {
-    		//last_project = CADENT.activeProject;
-    		CADENT.activeProject.collapseView();
+    	var prev_view = CADENT.activeProject;
+    	CADENT.activeProject = this;
+    	
+    	if(prev_view) {
+    		prev_view.collapseView();
     	}
     	
-    	CADENT.activeProject = this;
+    	
     	
     	$(this.el).removeClass('project-thumbnail-minimized').addClass('project-thumbnail-expanded');
     	$('.project-hero-img', this.el).removeClass('project-hero-img-collapsed').addClass('project-hero-img-expanded');
