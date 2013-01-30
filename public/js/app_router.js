@@ -57,13 +57,13 @@ CADENT.App = Backbone.Router.extend({
         $(".main-content").html(this.homeView.el);
 		this.scrollToTop();
 // LIVE CODE - START
-/*
+///*
         if(!CADENT.projectListLoaded){
 			CADENT.projectList.fetch({success: function(){
 	            CADENT.projectListLoaded = true;
 	        }});
 		}
-*/
+//*/
 // LIVE CODE - END
     },
     
@@ -78,69 +78,20 @@ CADENT.App = Backbone.Router.extend({
     	this.toggleNavButton($('#nav_projects'));
     	
 // TESTING CODE - START
-///*
-        //CADENT.projectListView = new CADENT.ProjectListView({model: CADENT.projectList});
+/*
         CADENT.projectListLoaded = true;
         this.displayProjectsAfterLoad();
-        /*
-        if($(".main-content").html()) {
-        	$(".main-content").fadeOut('fast', function() {
-	    		$(".main-content").html(CADENT.projectListView.el);
-	    		$(".main-content").fadeIn();
-	    		self.scrollToTop();
-	    	});
-        } else {
-        	$(".main-content").html(CADENT.projectListView.el);
-        }
-        */
-        
-        
-        
-//*/    
+*/    
 // TESTING CODE - END
         
 // LIVE CODE - START
 ///*        
 		if(CADENT.projectListLoaded) {
-			
 			this.displayProjectsAfterLoad();
-			/*
-			CADENT.projectListView = new CADENT.ProjectListView({model: CADENT.projectList});
-			
-			if($(".main-content").html()) {
-	        	$(".main-content").fadeOut('fast', function() {
-		    		$(".main-content").html(CADENT.projectListView.el);
-		    		$(".main-content").fadeIn();
-		    		self.scrollToTop();
-		    	});
-	        } else {
-	        	$(".main-content").html(CADENT.projectListView.el);
-	        }
-	    	
-			
-			if(CADENT.direct_pid) {
-				CADENT.projectListView.showDetail(CADENT.direct_pid);
-				CADENT.direct_pid = null;
-			} else {
-				this.scrollToTop();
-			}
-			*/
 		} else {
 			CADENT.projectList.fetch({success: function(){
 	            CADENT.projectListLoaded = true;
 	            this.displayProjectsAfterLoad();
-	            /*
-	            CADENT.projectListView = new CADENT.ProjectListView({model: CADENT.projectList});
-	            $(".main-content").html(CADENT.projectListView.el);
-	            
-	            if(CADENT.direct_pid) {
-					CADENT.projectListView.showDetail(CADENT.direct_pid);
-					CADENT.direct_pid = null;
-				} else {
-					this.scrollToTop();
-				}
-				*/
-	            
 	        }});
 		}
 //*/
