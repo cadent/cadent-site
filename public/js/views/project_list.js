@@ -92,7 +92,7 @@ CADENT.ProjectImgThumbView = Backbone.View.extend({
         } else {
         	$(this.el).html('<img src="' + this.model.get('thumb_url') + '">');
         	$(this.el).addClass('thumb-deselected');
-        	$(this.el).find('img').fadeTo(500, 0.5);
+        	$('img', this.el).fadeTo(300, 0.5);
         }
         
         return this;
@@ -100,13 +100,13 @@ CADENT.ProjectImgThumbView = Backbone.View.extend({
     
     onImg: function( e ) {
     	if(!this.selected) {
-    		$(this.el).find('img').fadeTo(500, 1);
+    		$('img', this.el).stop().fadeTo(300, 1);
     	}
     },
     
     offImg: function( e ) {
     	if(!this.selected) {
-    		$(this.el).find('img').fadeTo(500, 0.5);
+    		$('img', this.el).stop().fadeTo(300, 0.5);
     	}
     },
     
@@ -116,7 +116,7 @@ CADENT.ProjectImgThumbView = Backbone.View.extend({
     	var heroImg = this.model.get('tgtImg');
     	var new_url = this.model.get('img_url');
     	
-    	$(this.el).find('img').fadeTo(500, 1);
+    	$('img', this.el).stop().fadeTo(300, 1);
 
     	
 	   heroImg.fadeOut(300, function(){
@@ -152,9 +152,7 @@ CADENT.ProjectListItemView = Backbone.View.extend({
 	},
 	
     initialize: function () {
-        //this.model.bind("change", this.render, this);
-        //this.model.bind("destroy", this.close, this);
-       // this.b_details = $('#b_details span');
+       this.render();
     },
 
     render: function () {
@@ -250,7 +248,6 @@ CADENT.ProjectListItemView = Backbone.View.extend({
     	$('.hero-img', this.el).removeClass('greyscale-img');
     	$('#b_details', this.el).text('Hide Details');
     	$('#b_view', this.el).css('display', 'block');
-    	
     	$('.project-thumbnail-list', this.el).fadeIn('slow', function() {
     			var targetOffset = CADENT.activeProject.$el.offset().top - 65;
 				$('html, body').animate({
@@ -261,7 +258,6 @@ CADENT.ProjectListItemView = Backbone.View.extend({
     
     collapseView: function() {
     	$(this.el).removeClass('project-thumbnail-expanded').addClass('project-thumbnail-minimized');
-    	
     	$('.project-hero-img', this.el).removeClass('project-hero-img-expanded').addClass('project-hero-img-collapsed');
     	$('.project-thumbnail-list', this.el).fadeOut('fast');
     	$('.hero-img', this.el).addClass('greyscale-img');
