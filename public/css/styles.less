@@ -49,9 +49,8 @@
 
 .headerHandwriting {
   //font-family: 'Dr Sugiyama' !important;
-  
-  font-family: 'IM Fell Double Pica SC' !important;
-  //font-family: 'Donegal One' !important;
+  //font-family: 'IM Fell Double Pica SC' !important;
+  font-family: 'Arizonia' !important;
    font-style: normal; 
 }
 
@@ -220,17 +219,17 @@ a:hover {
 }
 
 .spacer {
-  //.headerHandwriting;
+  .headerHandwriting;
   //.headerMain;
   //.txtItalic;
-  .txtSemi;
+  //.txtSemi;
   .box-shadow-default;
   .text-shadow-default;
   border-bottom: 1px solid @mediumDarkGrey;
   margin-bottom: 30px;
       font-size: 40px;
-        padding: 30px 0px 30px 0px;
-          color: rgb(134, 134, 134);
+        padding: 30px 0px 10px 6px;
+          color: @darkGrey;
 }
 
 
@@ -336,6 +335,10 @@ a:hover {
         .headerHandwriting;
         margin-top: 18px;
          font-size: 20px;
+         
+         a {
+           font-size: 28px;
+         }
       }
     }
   }

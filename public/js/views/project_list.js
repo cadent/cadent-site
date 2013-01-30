@@ -246,7 +246,7 @@ CADENT.ProjectListItemView = Backbone.View.extend({
     	$('.project-hero-img', this.el).removeClass('project-hero-img-collapsed').addClass('project-hero-img-expanded');
     	$('.project-desc', this.el).removeClass('project-desc-minimized').addClass('project-desc-expanded');
     	$('.hero-img', this.el).removeClass('greyscale-img');
-    	$('#b_details', this.el).text('- Hide Details');
+    	$('#b_details', this.el).text('Hide Details');
     	
     	if(this.model.get('url')) {
     		$('#b_view', this.el).css('display', 'block');
