@@ -15,18 +15,18 @@ CADENT.ProjectListView = Backbone.View.extend({
 	render: function () {
 		
 // TESTING CODE - START
-/*
+
 		var len = 10;
 		$(this.el).html('<div id="about-cadent" class="spacer">Recent Projects</div><div id="b_view_github" class="details-button"><span>+ View this Site on GitHub</span></div><div class="project-thumbnails"></div>');
 
         for (var i = 0; i < len; i++) {
             $('.project-thumbnails', this.el).append(new CADENT.ProjectListItemView({model: new CADENT.Project()}).render().el);
         }
-*/
+
 // TESTING CODE - END
 
 // LIVE CODE - START
-       
+/*       
 		var projects = this.model.models;
 		var len = projects.length;
 		CADENT.listItemViews = [];
@@ -40,7 +40,7 @@ CADENT.ProjectListView = Backbone.View.extend({
             $('.project-thumbnails', this.el).append(pliv.render().el);
             console.log('CADENT.listItemViews: ' + CADENT.listItemViews);
         }
-
+*/
 // LIVE CODE - END
         return this;
 	},
@@ -147,7 +147,8 @@ CADENT.ProjectListItemView = Backbone.View.extend({
 	
 	events: {
 		'click .hero-img-wrapper'		: 'expandView',
-		'click .details-button'			: 'toggleView'
+		'click .details-button'			: 'toggleView',
+		'click .view-button'			: 'launch'
 	},
 	
     initialize: function () {
@@ -204,6 +205,13 @@ CADENT.ProjectListItemView = Backbone.View.extend({
     	return this.model.get('pid');
     },
     
+    launch: function () {
+    	var url = this.model.get('url');
+    	if(url) {
+    		window.open(url, '_blank');
+    	}
+    },
+    
     selectImg: function( imgView ) {
     	if(this.selectedThumb){
     		this.selectedThumb.deselectImg();
@@ -241,6 +249,7 @@ CADENT.ProjectListItemView = Backbone.View.extend({
     	$('.project-desc', this.el).removeClass('project-desc-minimized').addClass('project-desc-expanded');
     	$('.hero-img', this.el).removeClass('greyscale-img');
     	$('#b_details', this.el).text('Hide Details');
+    	$('#b_view', this.el).css('display', 'block');
     	
     	$('.project-thumbnail-list', this.el).fadeIn('slow', function() {
     			var targetOffset = CADENT.activeProject.$el.offset().top - 65;
@@ -258,6 +267,7 @@ CADENT.ProjectListItemView = Backbone.View.extend({
     	$('.hero-img', this.el).addClass('greyscale-img');
     	$('.project-desc', this.el).removeClass('project-desc-expanded').addClass('project-desc-minimized');
     	$('#b_details', this.el).text('+ Show Details');
+    	$('#b_view', this.el).css('display', 'none');
     }
 
 });
