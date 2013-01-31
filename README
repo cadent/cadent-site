@@ -1,3 +1,13 @@
 This is the full source code for the Cadent Design site
 
 View at http://www.cadentdesign.com
+
+Site Colophon
+-----------------------------------
+Backbone.js: http://backbonejs.org
+Bootstrap: http://twitter.github.com/bootstrap
+LESS: http://lesscss.org
+Node.js: http://nodejs.org
+Express: http://expressjs.com
+MongoDB: http://www.mongodb.org
+Web Fonts: http://www.google.com/webfonts
