@@ -74,8 +74,8 @@ CADENT.HeaderView = Backbone.View.extend({
 
 CADENT.FooterView = Backbone.View.extend({
 
-    lang_tags: ['JavaScript','PHP 5+','MySQL','HMTL / HTML5','CSS / CSS3','JSON','XML','NoSQL','ActionScript','MXML','Flex 4.7 / Flash CS6'],
-    tech_tags: ['jQuery','Backbone.js','API (REST)','Node.js','LESS / SCSS','Zend','CakePHP','MongoDB','CL','git / GitHub / SVN','Photoshop CS6','Illustrator CS6','InDesign CS6', 'What you got..?'],
+    lang_tags: ['JavaScript','PHP 5+','MySQL','HMTL / HTML5','CSS / CSS3','JSON','XML','NoSQL','Node.js','ActionScript','MXML','Flex 4.7 / Flash CS6','Photoshop CS6','Illustrator CS6','InDesign CS6',],
+    tech_tags: ['jQuery','Backbone.js','API (REST)','LESS / SCSS','Zend','CakePHP','MongoDB','CL','git / GitHub / SVN','FB Graph API','Google+ / Maps / YouTube API','Twitter API','Server Admin','What you got..?'],
     
     initialize: function () {
         this.render();
