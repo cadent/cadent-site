@@ -67,13 +67,13 @@ CADENT.App = Backbone.Router.extend({
         }
 
 // LIVE CODE - START
-/*
+///*
         if(!CADENT.projectListLoaded){
 			CADENT.projectList.fetch({success: function(){
 	            CADENT.projectListLoaded = true;
 	        }});
 		}
-*/
+//*/
 // LIVE CODE - END
     },
     
@@ -87,14 +87,14 @@ CADENT.App = Backbone.Router.extend({
     	this.toggleNavButton($('#nav_projects'));
     	
 // TESTING CODE - START
-///*
+/*
         CADENT.projectListLoaded = true;
         this.displayProjectsAfterLoad();
-//*/    
+*/    
 // TESTING CODE - END
         
 // LIVE CODE - START
-/*        
+///*        
 		if(CADENT.projectListLoaded) {
 			this.displayProjectsAfterLoad();
 		} else {
@@ -103,7 +103,7 @@ CADENT.App = Backbone.Router.extend({
 	            self.displayProjectsAfterLoad();
 	        }});
 		}
-*/
+//*/
 // LIVE CODE - END
     	
     },
