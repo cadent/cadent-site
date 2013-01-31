@@ -17,7 +17,7 @@ CADENT.ProjectListView = Backbone.View.extend({
 // TESTING CODE - START
 /*
 		var len = 10;
-		$(this.el).html('<div id="about-cadent" class="spacer">Recent Projects</div><div id="b_view_github" class="details-button"><img src="img/launch.png"><span>View this Site on GitHub</span></div><div class="project-thumbnails"></div>');
+		$(this.el).html('<div id="about-cadent" class="spacer"><span class="grey-header">cadent</span>/:projects</div><div id="b_view_github" class="details-button"><img src="img/launch.png"><span>View this Site on GitHub</span></div><div class="project-thumbnails"></div>');
 
         for (var i = 0; i < len; i++) {
             $('.project-thumbnails', this.el).append(new CADENT.ProjectListItemView({model: new CADENT.Project()}).render().el);
@@ -31,7 +31,7 @@ CADENT.ProjectListView = Backbone.View.extend({
 		var len = projects.length;
 		CADENT.listItemViews = [];
 		
-		$(this.el).html('<div id="about-cadent" class="spacer">Recent Projects</div><div id="b_view_github" class="details-button"><img src="img/launch.png"><span>View this Site on GitHub</span></div><div class="project-thumbnails"></div>');
+		$(this.el).html('<div id="about-cadent" class="spacer"><span class="grey-header">cadent</span>/:projects</div><div id="b_view_github" class="details-button"><img src="img/launch.png"><span>View this Site on GitHub</span></div><div class="project-thumbnails"></div>');
 		
         for (var i = 0; i < len; i++) {
             var pliv = new CADENT.ProjectListItemView({model: projects[i]});
