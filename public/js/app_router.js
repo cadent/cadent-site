@@ -67,18 +67,17 @@ CADENT.App = Backbone.Router.extend({
         }
 
 // LIVE CODE - START
-///*
+/*
         if(!CADENT.projectListLoaded){
 			CADENT.projectList.fetch({success: function(){
 	            CADENT.projectListLoaded = true;
 	        }});
 		}
-//*/
+*/
 // LIVE CODE - END
     },
     
     projects : function () {
-        console.log('ROUTER :: projects - loaded = ' + CADENT.projectListLoaded);
         this.displayProjects();
     },
     
@@ -88,14 +87,14 @@ CADENT.App = Backbone.Router.extend({
     	this.toggleNavButton($('#nav_projects'));
     	
 // TESTING CODE - START
-/*
+///*
         CADENT.projectListLoaded = true;
         this.displayProjectsAfterLoad();
-*/    
+//*/    
 // TESTING CODE - END
         
 // LIVE CODE - START
-///*        
+/*        
 		if(CADENT.projectListLoaded) {
 			this.displayProjectsAfterLoad();
 		} else {
@@ -104,7 +103,7 @@ CADENT.App = Backbone.Router.extend({
 	            self.displayProjectsAfterLoad();
 	        }});
 		}
-//*/
+*/
 // LIVE CODE - END
     	
     },
@@ -137,7 +136,6 @@ CADENT.App = Backbone.Router.extend({
     },
     
     projectDetail : function ( pid ) {
-    	console.log('PID: ' + pid);
     	CADENT.direct_pid = pid;
     	this.displayProjects();
     },
@@ -162,7 +160,6 @@ CADENT.App = Backbone.Router.extend({
     _trackPageview: function() {
 	    var url;
 	    url = Backbone.history.getFragment();
-	    console.log('TRACK: ' + "/" + url);
 	    return _gaq.push(['_trackPageview', "/" + url]);
 	  }
 });

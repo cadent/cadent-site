@@ -15,18 +15,18 @@ CADENT.ProjectListView = Backbone.View.extend({
 	render: function () {
 		
 // TESTING CODE - START
-/*
+///*
 		var len = 10;
 		$(this.el).html('<div id="about-cadent" class="spacer">Recent Projects</div><div id="b_view_github" class="details-button"><img src="img/launch.png"><span>View this Site on GitHub</span></div><div class="project-thumbnails"></div>');
 
         for (var i = 0; i < len; i++) {
             $('.project-thumbnails', this.el).append(new CADENT.ProjectListItemView({model: new CADENT.Project()}).render().el);
         }
-*/
+//*/
 // TESTING CODE - END
 
 // LIVE CODE - START
-///*       
+/*       
 		var projects = this.model.models;
 		var len = projects.length;
 		CADENT.listItemViews = [];
@@ -39,7 +39,7 @@ CADENT.ProjectListView = Backbone.View.extend({
             
             $('.project-thumbnails', this.el).append(pliv.render().el);
         }
-//*/
+*/
 // LIVE CODE - END
         return this;
 	},
@@ -116,7 +116,6 @@ CADENT.ProjectImgThumbView = Backbone.View.extend({
     	
     	$('img', this.el).stop().fadeTo(300, 1);
 
-    	
 	   heroImg.fadeOut(300, function(){
 	      heroImg.attr('src',new_url).bind('onreadystatechange load', function(){
 	         if (this.complete) heroImg.fadeIn(300);
@@ -239,8 +238,6 @@ CADENT.ProjectListItemView = Backbone.View.extend({
     	if(prev_view) {
     		prev_view.collapseView();
     	}
-    	
-    	
     	
     	$(this.el).removeClass('project-thumbnail-minimized').addClass('project-thumbnail-expanded');
     	$('.project-hero-img', this.el).removeClass('project-hero-img-collapsed').addClass('project-hero-img-expanded');

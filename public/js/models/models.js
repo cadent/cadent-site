@@ -31,23 +31,6 @@ CADENT.ProjectCollection = Backbone.Collection.extend({
 
 });
 
-CADENT.Tag = Backbone.Model.extend({
-
-    urlRoot: "/tags",
-
-    idAttribute: "_id",
-
-    initialize: function () {
-        
-    },
-
-    defaults: {
-        _id: null,
-        name: "Missing Name",
-        desc: "Missing Description"
-    }
-});
-
 CADENT.ThumbImg = Backbone.Model.extend({
 
     initialize: function () {

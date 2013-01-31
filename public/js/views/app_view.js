@@ -24,7 +24,7 @@ CADENT.HomeView = Backbone.View.extend({
 CADENT.ContactView = Backbone.View.extend({
 
     events: {
-		//'click #b_view_projects'	: 'viewProjects'
+		'click #b_view_projects'	: 'viewProjects'
 	},
 	
     initialize: function () {
@@ -62,7 +62,6 @@ CADENT.HeaderView = Backbone.View.extend({
     },
     
     viewNav : function ( e ) {
-    	console.log('click: ' + $(e.currentTarget).attr('id').split('_')[1]);
     	CADENT.app.navigate($(e.currentTarget).attr('id').split('_')[1], true);
     },
     
