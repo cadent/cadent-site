@@ -26,7 +26,7 @@ exports.findAll = function(req, res) {
         });
     });
 };
-
+/*
 exports.addProject = function(req, res) {
     var proj = req.body;
     database.collection('projects', function(err, collection) {
@@ -39,3 +39,4 @@ exports.addProject = function(req, res) {
         });
     });
 };
+*/
