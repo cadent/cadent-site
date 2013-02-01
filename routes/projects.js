@@ -26,17 +26,3 @@ exports.findAll = function(req, res) {
         });
     });
 };
-/*
-exports.addProject = function(req, res) {
-    var proj = req.body;
-    database.collection('projects', function(err, collection) {
-        collection.insert(proj, {safe:true}, function(err, result) {
-            if (err) {
-                res.send({'error':'An error has occurred'});
-            } else {
-                res.send(result[0]);
-            }
-        });
-    });
-};
-*/

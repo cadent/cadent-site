@@ -1,7 +1,7 @@
 {
   "name": "cadent-design-site",
   "version": "1.0.0",
-  "description": "Portfolio site for Cadent Design",
+  "description": "Cadent Design",
   "engines":{
     "node": "0.8.x",
     "npm": "1.1.x"
